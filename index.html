@@ -2,67 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aarav Lala | Portfolio</title>
   <style>
+    /* Root colors for light and dark modes */
+    :root {
+      --bg-dark: #0e0e10;
+      --text-dark: #eaeaea;
+      --header-bg-dark: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      --accent-dark: #00f7ff;
+      --link-dark: #1ecbe1;
+      --border-dark: #444;
+      
+      --bg-light: #f5f7fa;
+      --text-light: #222222;
+      --header-bg-light: linear-gradient(to right, #d0e0f0, #a0c0d0, #6090b0);
+      --accent-light: #0077cc;
+      --link-light: #005a9c;
+      --border-light: #ccc;
+    }
+
+    /* Base styles */
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #0e0e10;
-      color: #eaeaea;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
     header {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      background: var(--header-bg-dark);
       padding: 2rem;
       text-align: center;
+      position: relative;
+      transition: background 0.4s ease;
     }
     header h1 {
       margin: 0;
       font-size: 2.5rem;
-      color: #00f7ff;
+      color: var(--accent-dark);
+      transition: color 0.4s ease;
     }
     header h2 {
       margin-top: 0.5rem;
       font-weight: 300;
       color: #b0e0e6;
+      transition: color 0.4s ease;
     }
     section {
       padding: 2rem 5%;
       max-width: 1000px;
       margin: auto;
+      transition: color 0.4s ease;
     }
     h3 {
       color: #00ffe1;
-      border-bottom: 1px solid #444;
+      border-bottom: 1px solid var(--border-dark);
       padding-bottom: 0.5rem;
       margin-top: 2rem;
+      transition: color 0.4s ease, border-color 0.4s ease;
     }
     .entry {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px dashed var(--border-dark);
+      padding-bottom: 1rem;
+      transition: border-color 0.4s ease;
     }
     .entry-title {
       font-weight: bold;
       font-size: 1.2rem;
       color: #fffc99;
+      transition: color 0.4s ease;
     }
     .entry-date {
       font-style: italic;
       color: #aaa;
       font-size: 0.9rem;
+      transition: color 0.4s ease;
     }
     a {
-      color: #1ecbe1;
+      color: var(--link-dark);
       text-decoration: none;
+      transition: color 0.4s ease;
     }
     a:hover {
       text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #666;
-      font-size: 0.9rem;
     }
     .links {
       margin-top: 1rem;
@@ -70,6 +95,121 @@
     .links a {
       margin: 0 1rem;
       color: #ccc;
+      transition: color 0.4s ease;
+    }
+    .learn-more-btn {
+      background-color: var(--link-dark);
+      color: #000;
+      border: none;
+      padding: 6px 12px;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background-color 0.3s ease;
+    }
+    .learn-more-btn:hover,
+    .learn-more-btn:focus {
+      background-color: #008ebc;
+      outline: none;
+    }
+    .more-content {
+      display: none;
+      margin-top: 1rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--border-dark);
+      font-size: 0.95rem;
+      transition: border-color 0.4s ease;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #666;
+      font-size: 0.9rem;
+      transition: color 0.4s ease;
+    }
+
+    /* Light mode overrides */
+    body.light-mode {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+    body.light-mode header {
+      background: var(--header-bg-light);
+    }
+    body.light-mode header h1 {
+      color: var(--accent-light);
+    }
+    body.light-mode header h2 {
+      color: #304050;
+    }
+    body.light-mode h3 {
+      color: var(--accent-light);
+      border-color: var(--border-light);
+    }
+    body.light-mode .entry {
+      border-color: var(--border-light);
+    }
+    body.light-mode .entry-title {
+      color: #666633;
+    }
+    body.light-mode .entry-date {
+      color: #555;
+    }
+    body.light-mode a {
+      color: var(--link-light);
+    }
+    body.light-mode .links a {
+      color: #444;
+    }
+    body.light-mode .learn-more-btn {
+      background-color: var(--link-light);
+      color: #fff;
+    }
+    body.light-mode .learn-more-btn:hover,
+    body.light-mode .learn-more-btn:focus {
+      background-color: #004975;
+    }
+    body.light-mode .more-content {
+      border-color: var(--border-light);
+    }
+    body.light-mode footer {
+      color: #444;
+    }
+
+    /* Toggle Button */
+    #toggle-theme {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background-color 0.3s ease;
+      color: var(--accent-dark);
+    }
+    #toggle-theme:hover,
+    #toggle-theme:focus {
+      background-color: rgba(0, 255, 255, 0.15);
+      outline: none;
+    }
+    body.light-mode #toggle-theme {
+      color: var(--accent-light);
+    }
+    /* Sun & Moon icons */
+    svg {
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      fill: currentColor;
     }
   </style>
 </head>
@@ -79,32 +219,69 @@
   <h1>Aarav Lala</h1>
   <h2>Senior @ Illinois Mathematics and Science Academy</h2>
   <div class="links">
-    <a href="mailto:alala1@imsa.edu">Email</a>
-    <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank">LinkedIn</a>
-    <a href="https://orcid.org/YOUR_ORCID" target="_blank">ORCID</a>
-    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar</a>
+    <a href="mailto:alala1@imsa.edu" aria-label="Email Aarav">Email</a>
+    <a href="https://www.linkedin.com/in/aarav-lala" target="_blank" rel="noopener" aria-label="LinkedIn Profile">LinkedIn</a>
+    <a href="https://orcid.org/0009-0009-7140-5244" target="_blank" rel="noopener" aria-label="ORCID Profile">ORCID</a>
+    <a href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar Profile">Google Scholar</a>
   </div>
 </header>
+
+<!-- Theme Toggle Button -->
+<button id="toggle-theme" aria-label="Toggle light and dark theme" title="Toggle light and dark theme">
+  <!-- Moon icon (dark mode) shown by default -->
+  <svg id="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+  </svg>
+  <!-- Sun icon (light mode) hidden initially -->
+  <svg id="icon-sun" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
+    <circle cx="12" cy="12" r="5"/>
+    <g stroke="currentColor" stroke-width="2">
+      <line x1="12" y1="1" x2="12" y2="3"/>
+      <line x1="12" y1="21" x2="12" y2="23"/>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+      <line x1="1" y1="12" x2="3" y2="12"/>
+      <line x1="21" y1="12" x2="23" y2="12"/>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+    </g>
+  </svg>
+</button>
 
 <section>
   <h3>Internships & Research</h3>
 
-  <div class="entry">
-    <div class="entry-title">Caterpillar iOS Internship</div>
-    <div class="entry-date">May–July 2021 · 6 hrs/week</div>
-    <p>Developed an industrial-grade “Spotter’s Guide” iOS app using Swift and Xcode. Surpassed 1,000+ downloads by field engineers. Built for rapid field identification of machinery types in construction zones.</p>
+<div class="entry">
+  <div class="entry-title">Caterpillar iOS Internship</div>
+  <div class="entry-date">May–July 2021 · 6 hrs/week</div>
+  <p>Developed an industrial-grade “Spotter’s Guide” iOS app using Swift and Xcode, surpassing 5,000 downloads by field engineers.</p>
+  <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+  <div class="more-content">
+    <p>
+      Enabled real-time equipment identification in construction zones by integrating Caterpillar’s product database with robust auto-layout practices. Created a comprehensive machinery specification database for easy access. The app is currently live on the Google Play Store: <a href="https://play.google.com/store/apps/details?id=com.cat.catdigital.mobile.spottersguide&hl=en_US" target="_blank" rel="noopener noreferrer">Spotter’s Guide on Google Play</a>.
+    </p>
   </div>
+</div>
+
 
   <div class="entry">
     <div class="entry-title">UIUC Youth Wellness Program</div>
     <div class="entry-date">Summer 2022 · 10 hrs/week</div>
-    <p>Researched large language models to identify linguistic markers of healthcare inequality. Collaborated with Peoria-based hospitals to explore language-based diagnostics for rural and underserved communities.</p>
+    <p>Researched large language models to identify linguistic markers of healthcare inequality.</p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Worked with hospitals in Peoria to understand how language affects healthcare outcomes. Built NLP pipelines for bias detection in medical communication. Mentored by Samyra Leonard from the UIUC Public Health Departmnet. Recieved Stipend of $600</p>
+    </div>
   </div>
 
   <div class="entry">
     <div class="entry-title">Edquill EdTech Internship</div>
     <div class="entry-date">June–August 2022 · 10–15 hrs/week</div>
-    <p>Led video production and multimedia strategy for an early-stage EdTech startup. Mentored the founder in editing workflows and content pipeline optimization.</p>
+    <p>Led video production and multimedia strategy for an early-stage EdTech startup.</p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Created tutorials and interactive demos used by thousands of users. Also mentored the founder on editing and content scaling strategies.</p>
+    </div>
   </div>
 </section>
 
@@ -114,42 +291,65 @@
   <div class="entry">
     <div class="entry-title">Low-Rank Matrix Approximation for Neural Network Compression</div>
     <div class="entry-date">ICMLT Europe 2025</div>
-    <p>Accepted and presented as the youngest presenter in conference history. Proposed a novel compression technique; cited in active compression model research. <br>
+    <p>Presented as the youngest in conference history. Cited in ongoing neural compression studies.<br>
     <a href="https://arxiv.org/abs/2504.20078">arxiv.org/abs/2504.20078</a></p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Applied SVD-based factorization for compressing deep layers without accuracy loss. Validated on CIFAR and ImageNet models.</p>
+    </div>
   </div>
 
   <div class="entry">
     <div class="entry-title">Learning Pareto-Optimal Rewards from Noisy Preferences</div>
-    <div class="entry-date">NeurIPS 2025</div>
-    <p>Developed robust reward learning from uncertain human feedback. <br>
+    <div class="entry-date">Pending NeurIPS 2025</div>
+    <p>Proposed methods for robust multi-objective RL with preference uncertainty.<br>
     <a href="https://arxiv.org/abs/2505.11864">arxiv.org/abs/2505.11864</a></p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Extended preference-based learning to support dynamic reward tradeoffs under annotator disagreement</p>
+    </div>
   </div>
 
   <div class="entry">
     <div class="entry-title">Q-Policy: Quantum-Enhanced RL Evaluation</div>
-    <div class="entry-date">NeurIPS 2025</div>
-    <p>Introduced quantum-inspired policy evaluation for faster convergence in RL environments. <br>
+    <div class="entry-date">Pending NeurIPS 2025</div>
+    <p>Applied quantum search ideas to policy optimization in large MDPs.<br>
     <a href="https://arxiv.org/abs/2505.11862">arxiv.org/abs/2505.11862</a></p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Combines ideas from Grover’s algorithm with TD-learning to accelerate convergence in high-dimensional spaces.</p>
+    </div>
   </div>
 
   <div class="entry">
     <div class="entry-title">Quantum-Evolutionary Neural Networks for Multi-Agent Federated Learning</div>
     <div class="entry-date">2025</div>
-    <p>Fusion of quantum search principles with evolutionary AI for federated learning on edge devices. <br>
+    <p>Optimized decentralized model training with quantum-guided evolution.<br>
     <a href="https://arxiv.org/abs/2505.15836">arxiv.org/abs/2505.15836</a></p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Outperformed baseline federated methods in low-bandwidth, multi-agent environments using hybrid mutation-based techniques.</p>
+    </div>
   </div>
 
   <div class="entry">
     <div class="entry-title">Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</div>
-    <div class="entry-date">ACM-BCB 2025</div>
-    <p>Inspired by a personal story—uses computational social science and LLMs to evaluate public sentiment on Ozempic across YouTube. Mentored by Dr. Ashiqur Khudabuksh (CMU).<br>
-    <i>Accepted for presentation</i></p>
+    <div class="entry-date">Pending ACM-BCB 2025</div>
+    <p>Analyzed 25,000+ YouTube comments using LLMs and sentiment clustering. Mentored by CMU’s Dr. Ashiqur Khudabuksh.</p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Results revealed key differences between clinical results and public perception. Motivated by a family member’s experience with Ozempic.</p>
+    </div>
   </div>
 
   <div class="entry">
-    <div class="entry-title">The Minimax Complexity of Preference-Based Decision Making in Multi-Objective RL</div>
-    <div class="entry-date">NeurIPS 2025</div>
-    <p>Mathematical proof for regret bounds in noisy multi-objective optimization.</p>
+    <div class="entry-title">Minimax Complexity of Preference-Based Decision Making</div>
+    <div class="entry-date">Pending NeurIPS 2025</div>
+    <p>Established regret lower bounds for noisy multi-objective RL settings.</p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Built on information-theoretic tools to show optimal sample complexity for learning Pareto frontiers with partial preferences.</p>
+    </div>
   </div>
 </section>
 
@@ -159,19 +359,58 @@
   <div class="entry">
     <div class="entry-title">Cybersecurity Authenticator for Underserved Schools</div>
     <div class="entry-date">EdTech Conf. 2025</div>
-    <p>Building an open-source, school-safe alternative to MS Authenticator using Wazuh, Proxmox, and Duo. Designed to be low-cost and scalable. Mentored by Dr. Imboden (SIUC).</p>
+    <p>Created low-cost MFA using Wazuh, Proxmox, Duo. Led deployment design. Mentored by Dr. Imboden (SIUC).</p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Built to serve K–12 districts with zero licensing fees. Pilot launching in Fall 2025 at schools across rural Illinois.</p>
+    </div>
   </div>
 
   <div class="entry">
     <div class="entry-title">Implicit Toxicity Detection in LLMs</div>
-    <div class="entry-date">Journal Publication In Progress</div>
-    <p>Designing RLHF + XAI methods to flag and reduce adversarial jailbreak outputs in LLMs. Combines novel dataset curation with robust interpretability. Mentored by Dr. Alsobeh (SIUC).</p>
+    <div class="entry-date">Journal Submission In Progress</div>
+    <p>RLHF + SHAP + jailbreaking resistance. Mentored by Dr. Alsobeh (SIUC).</p>
+    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
+    <div class="more-content">
+      <p>Detects toxic subtext and adversarial prompt exploits in large generative models. Employs explainable filtering to improve ethical safety layers.</p>
+    </div>
   </div>
 </section>
 
 <footer>
   &copy; 2025 Aarav Lala · Powered by GitHub Pages
 </footer>
+
+<script>
+  // Toggle "Learn More" content
+  function toggleContent(button) {
+    const content = button.nextElementSibling;
+    const isVisible = content.style.display === "block";
+    content.style.display = isVisible ? "none" : "block";
+    button.textContent = isVisible ? "Learn More" : "Show Less";
+  }
+
+  // Theme toggle
+  const toggleBtn = document.getElementById('toggle-theme');
+  const iconMoon = document.getElementById('icon-moon');
+  const iconSun = document.getElementById('icon-sun');
+
+  // Load saved theme or default dark
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+    document.body.classList.add('light-mode');
+    iconMoon.style.display = 'none';
+    iconSun.style.display = 'block';
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    const isLight = document.body.classList.contains('light-mode');
+    iconMoon.style.display = isLight ? 'none' : 'block';
+    iconSun.style.display = isLight ? 'block' : 'none';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+</script>
 
 </body>
 </html>
