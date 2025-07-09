@@ -5,532 +5,779 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aarav Lala | Portfolio</title>
   <style>
-    /* Root colors for light and dark modes */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    
     :root {
-      --bg-dark: #0e0e10;
-      --text-dark: #eaeaea;
-      --header-bg-dark: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      --accent-dark: #00f7ff;
-      --link-dark: #1ecbe1;
-      --border-dark: #444;
-      
-      --bg-light: #f5f7fa;
-      --text-light: #222222;
-      --header-bg-light: linear-gradient(to right, #d0e0f0, #a0c0d0, #6090b0);
-      --accent-light: #0077cc;
-      --link-light: #005a9c;
-      --border-light: #ccc;
+      --primary-bg: #0a0a0f;
+      --secondary-bg: #1a1a2e;
+      --accent-primary: #00f5ff;
+      --accent-secondary: #ff006e;
+      --text-primary: #ffffff;
+      --text-secondary: #a0a0a0;
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      --neon-glow: 0 0 20px rgba(0, 245, 255, 0.3);
     }
 
-    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
       line-height: 1.6;
-      background: var(--bg-dark);
-      color: var(--text-dark);
-      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
     }
+
+    /* Animated background */
+    .bg-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(45deg, #0a0a0f, #1a1a2e, #16213e);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+    }
+
+    .bg-animation::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 0, 110, 0.1) 0%, transparent 50%);
+      animation: pulseGlow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.8; }
+    }
+
+    /* Header */
     header {
-      background: var(--header-bg-dark);
-      padding: 2rem;
-      text-align: center;
       position: relative;
-      transition: background 0.4s ease;
+      padding: 4rem 2rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      background: var(--glass-bg);
+      border-bottom: 1px solid var(--glass-border);
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: var(--accent-dark);
-      transition: color 0.4s ease;
+
+    .header-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: slideInFromTop 1s ease-out;
     }
-    header h2 {
-      margin-top: 0.5rem;
-      font-weight: 300;
-      color: #b0e0e6;
-      transition: color 0.4s ease;
-    }
-    section {
-      padding: 2rem 5%;
-      max-width: 1000px;
-      margin: auto;
-      transition: color 0.4s ease;
-    }
-    h3 {
-      color: #00ffe1;
-      border-bottom: 1px solid var(--border-dark);
-      padding-bottom: 0.5rem;
-      margin-top: 2rem;
-      transition: color 0.4s ease, border-color 0.4s ease;
-    }
-    .entry {
-      margin-bottom: 2rem;
-      border-bottom: 1px dashed var(--border-dark);
-      padding-bottom: 1rem;
-      transition: border-color 0.4s ease;
-    }
-    .entry-title {
-      font-weight: bold;
+
+    .header-content h2 {
       font-size: 1.2rem;
-      color: #fffc99;
-      transition: color 0.4s ease;
+      font-weight: 300;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      animation: slideInFromTop 1s ease-out 0.2s both;
     }
-    .entry-date {
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      animation: slideInFromTop 1s ease-out 0.4s both;
+    }
+
+    .social-link {
+      padding: 0.8rem 1.5rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 245, 255, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--neon-glow);
+      border-color: var(--accent-primary);
+    }
+
+    .social-link:hover::before {
+      left: 100%;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--accent-primary);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 50%;
+      height: 2px;
+      background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
+      animation: expandLine 0.8s ease-out forwards;
+    }
+
+    @keyframes expandLine {
+      from { width: 0; }
+      to { width: 50%; }
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow);
+      border-color: var(--accent-primary);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-date {
+      font-size: 0.9rem;
+      color: var(--accent-secondary);
+      font-weight: 500;
+      padding: 0.3rem 0.8rem;
+      background: rgba(255, 0, 110, 0.1);
+      border-radius: 15px;
+      border: 1px solid rgba(255, 0, 110, 0.3);
+      white-space: nowrap;
+    }
+
+    .card-mentor {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
       font-style: italic;
-      color: #aaa;
-      font-size: 0.9rem;
-      transition: color 0.4s ease;
     }
-    .entry-mentor {
-      font-size: 0.9rem;
-      color: #87ceeb;
-      margin-top: 0.3rem;
-      transition: color 0.4s ease;
+
+    .card-description {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
     }
-    .keywords {
-      margin-top: 0.5rem;
+
+    .card-description a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s ease;
+    }
+
+    .card-description a:hover {
+      border-bottom-color: var(--accent-primary);
+    }
+
+    /* Tags */
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
-    .keyword {
-      background: rgba(0, 247, 255, 0.15);
-      color: var(--accent-dark);
-      padding: 0.2rem 0.6rem;
-      border-radius: 12px;
+
+    .tag {
+      padding: 0.4rem 0.8rem;
+      background: rgba(0, 245, 255, 0.1);
+      border: 1px solid rgba(0, 245, 255, 0.3);
+      border-radius: 20px;
       font-size: 0.8rem;
-      border: 1px solid rgba(0, 247, 255, 0.3);
-      transition: all 0.4s ease;
+      color: var(--accent-primary);
+      font-weight: 500;
+      transition: all 0.3s ease;
     }
-    a {
-      color: var(--link-dark);
-      text-decoration: none;
-      transition: color 0.4s ease;
+
+    .tag:hover {
+      background: rgba(0, 245, 255, 0.2);
+      transform: scale(1.05);
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    .links {
-      margin-top: 1rem;
-    }
-    .links a {
-      margin: 0 1rem;
-      color: #ccc;
-      transition: color 0.4s ease;
-    }
-    .learn-more-btn {
-      background-color: var(--link-dark);
-      color: #000;
+
+    /* Expand Button */
+    .expand-btn {
+      background: linear-gradient(45deg, var(--accent-primary), var(--accent-secondary));
       border: none;
-      padding: 6px 12px;
-      margin-top: 0.5rem;
-      border-radius: 6px;
+      border-radius: 25px;
+      padding: 0.7rem 1.5rem;
+      color: var(--primary-bg);
+      font-weight: 600;
       cursor: pointer;
-      font-size: 0.85rem;
-      transition: background-color 0.3s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .learn-more-btn:hover,
-    .learn-more-btn:focus {
-      background-color: #008ebc;
-      outline: none;
+
+    .expand-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
     }
-    .more-content {
-      display: none;
+
+    .expand-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 245, 255, 0.3);
+    }
+
+    .expand-btn:hover::before {
+      width: 100%;
+      height: 100%;
+    }
+
+    .expand-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Expanded Content */
+    .expanded-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
       margin-top: 1rem;
-      padding-left: 1rem;
-      border-left: 3px solid var(--border-dark);
-      font-size: 0.95rem;
-      transition: border-color 0.4s ease;
     }
+
+    .expanded-content.show {
+      max-height: 500px;
+    }
+
+    .expanded-inner {
+      padding: 1.5rem;
+      background: rgba(0, 245, 255, 0.05);
+      border-radius: 15px;
+      border-left: 3px solid var(--accent-primary);
+      margin-top: 1rem;
+    }
+
+    /* Animations */
+    @keyframes slideInFromTop {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem;
-      color: #666;
-      font-size: 0.9rem;
-      transition: color 0.4s ease;
+      padding: 3rem 2rem;
+      color: var(--text-secondary);
+      background: var(--glass-bg);
+      border-top: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
     }
 
-    /* Light mode overrides */
-    body.light-mode {
-      background: var(--bg-light);
-      color: var(--text-light);
-    }
-    body.light-mode header {
-      background: var(--header-bg-light);
-    }
-    body.light-mode header h1 {
-      color: var(--accent-light);
-    }
-    body.light-mode header h2 {
-      color: #304050;
-    }
-    body.light-mode h3 {
-      color: var(--accent-light);
-      border-color: var(--border-light);
-    }
-    body.light-mode .entry {
-      border-color: var(--border-light);
-    }
-    body.light-mode .entry-title {
-      color: #666633;
-    }
-    body.light-mode .entry-date {
-      color: #555;
-    }
-    body.light-mode .entry-mentor {
-      color: #2c5f78;
-    }
-    body.light-mode .keyword {
-      background: rgba(0, 119, 204, 0.15);
-      color: var(--accent-light);
-      border-color: rgba(0, 119, 204, 0.3);
-    }
-    body.light-mode a {
-      color: var(--link-light);
-    }
-    body.light-mode .links a {
-      color: #444;
-    }
-    body.light-mode .learn-more-btn {
-      background-color: var(--link-light);
-      color: #fff;
-    }
-    body.light-mode .learn-more-btn:hover,
-    body.light-mode .learn-more-btn:focus {
-      background-color: #004975;
-    }
-    body.light-mode .more-content {
-      border-color: var(--border-light);
-    }
-    body.light-mode footer {
-      color: #444;
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .cards-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .card-date {
+        margin-top: 0.5rem;
+      }
+      
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+      }
     }
 
-    /* Toggle Button */
-    #toggle-theme {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-      width: 48px;
-      height: 48px;
-      padding: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background-color 0.3s ease;
-      color: var(--accent-dark);
+    /* Scroll animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
     }
-    #toggle-theme:hover,
-    #toggle-theme:focus {
-      background-color: rgba(0, 255, 255, 0.15);
-      outline: none;
-    }
-    body.light-mode #toggle-theme {
-      color: var(--accent-light);
-    }
-    /* Sun & Moon icons */
-    svg {
-      width: 24px;
-      height: 24px;
-      pointer-events: none;
-      fill: currentColor;
+
+    .animate-on-scroll.animated {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+  <div class="bg-animation"></div>
 
-<header>
-  <h1>Aarav Lala</h1>
-  <h2>Senior @ Illinois Mathematics and Science Academy</h2>
-  <div class="links">
-    <a href="mailto:alala1@imsa.edu" aria-label="Email Aarav">Email</a>
-    <a href="https://www.linkedin.com/in/aarav-lala" target="_blank" rel="noopener" aria-label="LinkedIn Profile">LinkedIn</a>
-    <a href="https://orcid.org/0009-0009-7140-5244" target="_blank" rel="noopener" aria-label="ORCID Profile">ORCID</a>
-    <a href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar Profile">Google Scholar</a>
-  </div>
-</header>
-
-<!-- Theme Toggle Button -->
-<button id="toggle-theme" aria-label="Toggle light and dark theme" title="Toggle light and dark theme">
-  <!-- Moon icon (dark mode) shown by default -->
-  <svg id="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
-  </svg>
-  <!-- Sun icon (light mode) hidden initially -->
-  <svg id="icon-sun" viewBox="0 0 24 24" aria-hidden="true" style="display:none;">
-    <circle cx="12" cy="12" r="5"/>
-    <g stroke="currentColor" stroke-width="2">
-      <line x1="12" y1="1" x2="12" y2="3"/>
-      <line x1="12" y1="21" x2="12" y2="23"/>
-      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-      <line x1="1" y1="12" x2="3" y2="12"/>
-      <line x1="21" y1="12" x2="23" y2="12"/>
-      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-    </g>
-  </svg>
-</button>
-
-<section>
-  <h3>Internships & Research</h3>
-
-<div class="entry">
-  <div class="entry-title">Caterpillar iOS Internship</div>
-  <div class="entry-date">May–July 2021 · 6 hrs/week</div>
-  <p>Developed an industrial-grade "Spotter's Guide" iOS app using Swift and Xcode, surpassing 5,000 downloads by field engineers.</p>
-  <div class="keywords">
-    <span class="keyword">iOS Development</span>
-    <span class="keyword">Swift</span>
-    <span class="keyword">Xcode</span>
-    <span class="keyword">Mobile Applications</span>
-    <span class="keyword">Industrial Software</span>
-    <span class="keyword">Database Integration</span>
-  </div>
-  <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-  <div class="more-content">
-    <p>
-      Enabled real-time equipment identification in construction zones by integrating Caterpillar's product database with robust auto-layout practices. Created a comprehensive machinery specification database for easy access. The app is currently live on the Google Play Store: <a href="https://play.google.com/store/apps/details?id=com.cat.catdigital.mobile.spottersguide&hl=en_US" target="_blank" rel="noopener noreferrer">Spotter's Guide on Google Play</a>.
-    </p>
-  </div>
-</div>
-
-  <div class="entry">
-    <div class="entry-title">UIUC Youth Wellness Program</div>
-    <div class="entry-date">Summer 2022 · 10 hrs/week</div>
-    <div class="entry-mentor">Mentored by Samyra Leonard, UIUC Public Health Department</div>
-    <p>Researched large language models to identify linguistic markers of healthcare inequality.</p>
-    <div class="keywords">
-      <span class="keyword">Large Language Models</span>
-      <span class="keyword">Natural Language Processing</span>
-      <span class="keyword">Healthcare Inequality</span>
-      <span class="keyword">Bias Detection</span>
-      <span class="keyword">Medical Communication</span>
-      <span class="keyword">Public Health</span>
+  <header>
+    <div class="header-content">
+      <h1>Aarav Lala</h1>
+      <h2>Senior @ Illinois Mathematics and Science Academy</h2>
+      <div class="social-links">
+        <a href="mailto:alala1@imsa.edu" class="social-link">Email</a>
+        <a href="https://www.linkedin.com/in/aarav-lala" target="_blank" rel="noopener" class="social-link">LinkedIn</a>
+        <a href="https://orcid.org/0009-0009-7140-5244" target="_blank" rel="noopener" class="social-link">ORCID</a>
+        <a href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener" class="social-link">Google Scholar</a>
+      </div>
     </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Worked with hospitals in Peoria to understand how language affects healthcare outcomes. Built NLP pipelines for bias detection in medical communication. Received stipend of $600.</p>
-    </div>
-  </div>
+  </header>
 
-  <div class="entry">
-    <div class="entry-title">Edquill EdTech Internship</div>
-    <div class="entry-date">June–August 2022 · 10–15 hrs/week</div>
-    <p>Led video production and multimedia strategy for an early-stage EdTech startup.</p>
-    <div class="keywords">
-      <span class="keyword">EdTech</span>
-      <span class="keyword">Video Production</span>
-      <span class="keyword">Multimedia Strategy</span>
-      <span class="keyword">Content Creation</span>
-      <span class="keyword">Educational Technology</span>
-      <span class="keyword">Startup</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Created tutorials and interactive demos used by thousands of users. Also mentored the founder on editing and content scaling strategies.</p>
-    </div>
-  </div>
-</section>
+  <main>
+    <section class="section animate-on-scroll">
+      <h3 class="section-title">Internships & Research</h3>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Caterpillar iOS Internship</h4>
+              <div class="card-date">May–July 2021</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Developed an industrial-grade "Spotter's Guide" iOS app using Swift and Xcode, surpassing 5,000 downloads by field engineers.
+          </p>
+          <div class="tags">
+            <span class="tag">iOS Development</span>
+            <span class="tag">Swift</span>
+            <span class="tag">Xcode</span>
+            <span class="tag">Mobile Applications</span>
+            <span class="tag">Industrial Software</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Enabled real-time equipment identification in construction zones by integrating Caterpillar's product database with robust auto-layout practices. Created a comprehensive machinery specification database for easy access. The app is currently live on the <a href="https://play.google.com/store/apps/details?id=com.cat.catdigital.mobile.spottersguide&hl=en_US" target="_blank" rel="noopener">Google Play Store</a>.</p>
+            </div>
+          </div>
+        </div>
 
-<section>
-  <h3>Published Research</h3>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">UIUC Youth Wellness Program</h4>
+              <div class="card-date">Summer 2022</div>
+            </div>
+          </div>
+          <p class="card-mentor">Mentored by Samyra Leonard, UIUC Public Health Department</p>
+          <p class="card-description">
+            Researched large language models to identify linguistic markers of healthcare inequality.
+          </p>
+          <div class="tags">
+            <span class="tag">Large Language Models</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Healthcare Inequality</span>
+            <span class="tag">Bias Detection</span>
+            <span class="tag">Public Health</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Worked with hospitals in Peoria to understand how language affects healthcare outcomes. Built NLP pipelines for bias detection in medical communication. Received stipend of $600.</p>
+            </div>
+          </div>
+        </div>
 
-  <div class="entry">
-    <div class="entry-title">Low-Rank Matrix Approximation for Neural Network Compression</div>
-    <div class="entry-date">ICMLT Europe 2025</div>
-    <p>Presented as the youngest in conference history. Cited in ongoing neural compression studies.<br>
-    <a href="https://arxiv.org/abs/2504.20078">arxiv.org/abs/2504.20078</a></p>
-    <div class="keywords">
-      <span class="keyword">Neural Network Compression</span>
-      <span class="keyword">Low-Rank Matrix Approximation</span>
-      <span class="keyword">Singular Value Decomposition</span>
-      <span class="keyword">Deep Learning</span>
-      <span class="keyword">Model Optimization</span>
-      <span class="keyword">Computer Vision</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Applied SVD-based factorization for compressing deep layers without accuracy loss. Validated on CIFAR and ImageNet models.</p>
-    </div>
-  </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Edquill EdTech Internship</h4>
+              <div class="card-date">June–August 2022</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Led video production and multimedia strategy for an early-stage EdTech startup.
+          </p>
+          <div class="tags">
+            <span class="tag">EdTech</span>
+            <span class="tag">Video Production</span>
+            <span class="tag">Multimedia Strategy</span>
+            <span class="tag">Content Creation</span>
+            <span class="tag">Startup</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Created tutorials and interactive demos used by thousands of users. Also mentored the founder on editing and content scaling strategies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="entry">
-    <div class="entry-title">Learning Pareto-Optimal Rewards from Noisy Preferences</div>
-    <div class="entry-date">Pending NeurIPS 2025</div>
-    <p>Proposed methods for robust multi-objective RL with preference uncertainty.<br>
-    <a href="https://arxiv.org/abs/2505.11864">arxiv.org/abs/2505.11864</a></p>
-    <div class="keywords">
-      <span class="keyword">Reinforcement Learning</span>
-      <span class="keyword">Multi-Objective Optimization</span>
-      <span class="keyword">Pareto Optimization</span>
-      <span class="keyword">Preference Learning</span>
-      <span class="keyword">Robust Learning</span>
-      <span class="keyword">Decision Making</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Extended preference-based learning to support dynamic reward tradeoffs under annotator disagreement</p>
-    </div>
-  </div>
+    <section class="section animate-on-scroll">
+      <h3 class="section-title">Published Research</h3>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Low-Rank Matrix Approximation for Neural Network Compression</h4>
+              <div class="card-date">ICMLT Europe 2025</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Presented as the youngest in conference history. Cited in ongoing neural compression studies.<br>
+            <a href="https://arxiv.org/abs/2504.20078" target="_blank" rel="noopener">arxiv.org/abs/2504.20078</a>
+          </p>
+          <div class="tags">
+            <span class="tag">Neural Network Compression</span>
+            <span class="tag">SVD</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Model Optimization</span>
+            <span class="tag">Computer Vision</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Applied SVD-based factorization for compressing deep layers without accuracy loss. Validated on CIFAR and ImageNet models.</p>
+            </div>
+          </div>
+        </div>
 
-  <div class="entry">
-    <div class="entry-title">Q-Policy: Quantum-Enhanced RL Evaluation</div>
-    <div class="entry-date">Pending NeurIPS 2025</div>
-    <p>Applied quantum search ideas to policy optimization in large MDPs.<br>
-    <a href="https://arxiv.org/abs/2505.11862">arxiv.org/abs/2505.11862</a></p>
-    <div class="keywords">
-      <span class="keyword">Quantum Computing</span>
-      <span class="keyword">Reinforcement Learning</span>
-      <span class="keyword">Grover's Algorithm</span>
-      <span class="keyword">Policy Optimization</span>
-      <span class="keyword">Markov Decision Process</span>
-      <span class="keyword">Quantum Machine Learning</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Combines ideas from Grover's algorithm with TD-learning to accelerate convergence in high-dimensional spaces.</p>
-    </div>
-  </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Learning Pareto-Optimal Rewards from Noisy Preferences</h4>
+              <div class="card-date">Pending NeurIPS 2025</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Proposed methods for robust multi-objective RL with preference uncertainty.<br>
+            <a href="https://arxiv.org/abs/2505.11864" target="_blank" rel="noopener">arxiv.org/abs/2505.11864</a>
+          </p>
+          <div class="tags">
+            <span class="tag">Reinforcement Learning</span>
+            <span class="tag">Multi-Objective Optimization</span>
+            <span class="tag">Pareto Optimization</span>
+            <span class="tag">Preference Learning</span>
+            <span class="tag">Robust Learning</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Extended preference-based learning to support dynamic reward tradeoffs under annotator disagreement.</p>
+            </div>
+          </div>
+        </div>
 
-  <div class="entry">
-    <div class="entry-title">Quantum-Evolutionary Neural Networks for Multi-Agent Federated Learning</div>
-    <div class="entry-date">2025</div>
-    <p>Optimized decentralized model training with quantum-guided evolution.<br>
-    <a href="https://arxiv.org/abs/2505.15836">arxiv.org/abs/2505.15836</a></p>
-    <div class="keywords">
-      <span class="keyword">Federated Learning</span>
-      <span class="keyword">Quantum Computing</span>
-      <span class="keyword">Evolutionary Algorithms</span>
-      <span class="keyword">Multi-Agent Systems</span>
-      <span class="keyword">Neural Networks</span>
-      <span class="keyword">Decentralized Learning</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Outperformed baseline federated methods in low-bandwidth, multi-agent environments using hybrid mutation-based techniques.</p>
-    </div>
-  </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Q-Policy: Quantum-Enhanced RL Evaluation</h4>
+              <div class="card-date">Pending NeurIPS 2025</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Applied quantum search ideas to policy optimization in large MDPs.<br>
+            <a href="https://arxiv.org/abs/2505.11862" target="_blank" rel="noopener">arxiv.org/abs/2505.11862</a>
+          </p>
+          <div class="tags">
+            <span class="tag">Quantum Computing</span>
+            <span class="tag">Reinforcement Learning</span>
+            <span class="tag">Grover's Algorithm</span>
+            <span class="tag">Policy Optimization</span>
+            <span class="tag">Quantum ML</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Combines ideas from Grover's algorithm with TD-learning to accelerate convergence in high-dimensional spaces.</p>
+            </div>
+          </div>
+        </div>
 
-  <div class="entry">
-    <div class="entry-title">Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</div>
-    <div class="entry-date">Pending ACM-BCB 2025</div>
-    <div class="entry-mentor">Mentored by Dr. Ashiqur Khudabuksh, Golisano College of Computing and Information Sciences (GCCIS) & PhD Student Soumyajit Datta, Computational Social Science and Linguistics</div>
-    <p>Analyzed 25,000+ YouTube comments using LLMs and sentiment clustering.</p>
-    <div class="keywords">
-      <span class="keyword">Large Language Models</span>
-      <span class="keyword">Sentiment Analysis</span>
-      <span class="keyword">Computational Social Science</span>
-      <span class="keyword">Healthcare Analytics</span>
-      <span class="keyword">Social Media Mining</span>
-      <span class="keyword">Public Health</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Results revealed key differences between clinical results and public perception. Motivated by a family member's experience with Ozempic.</p>
-    </div>
-  </div>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Quantum-Evolutionary Neural Networks for Multi-Agent Federated Learning</h4>
+              <div class="card-date">2025</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Optimized decentralized model training with quantum-guided evolution.<br>
+            <a href="https://arxiv.org/abs/2505.15836" target="_blank" rel="noopener">arxiv.org/abs/2505.15836</a>
+          </p>
+          <div class="tags">
+            <span class="tag">Federated Learning</span>
+            <span class="tag">Quantum Computing</span>
+            <span class="tag">Evolutionary Algorithms</span>
+            <span class="tag">Multi-Agent Systems</span>
+            <span class="tag">Neural Networks</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Outperformed baseline federated methods in low-bandwidth, multi-agent environments using hybrid mutation-based techniques.</p>
+            </div>
+          </div>
+        </div>
 
-  <div class="entry">
-    <div class="entry-title">Minimax Complexity of Preference-Based Decision Making</div>
-    <div class="entry-date">Pending NeurIPS 2025</div>
-    <p>Established regret lower bounds for noisy multi-objective RL settings.</p>
-    <div class="keywords">
-      <span class="keyword">Theoretical Machine Learning</span>
-      <span class="keyword">Minimax Theory</span>
-      <span class="keyword">Information Theory</span>
-      <span class="keyword">Sample Complexity</span>
-      <span class="keyword">Preference Learning</span>
-      <span class="keyword">Multi-Objective Learning</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Built on information-theoretic tools to show optimal sample complexity for learning Pareto frontiers with partial preferences.</p>
-    </div>
-  </div>
-</section>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</h4>
+              <div class="card-date">Pending ACM-BCB 2025</div>
+            </div>
+          </div>
+          <p class="card-mentor">Mentored by Dr. Ashiqur Khudabuksh & PhD Student Soumyajit Datta</p>
+          <p class="card-description">
+            Analyzed 25,000+ YouTube comments using LLMs and sentiment clustering.
+          </p>
+          <div class="tags">
+            <span class="tag">Large Language Models</span>
+            <span class="tag">Sentiment Analysis</span>
+            <span class="tag">Computational Social Science</span>
+            <span class="tag">Healthcare Analytics</span>
+            <span class="tag">Social Media Mining</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Results revealed key differences between clinical results and public perception. Motivated by a family member's experience with Ozempic.</p>
+            </div>
+          </div>
+        </div>
 
-<section>
-  <h3>Current Research</h3>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Minimax Complexity of Preference-Based Decision Making</h4>
+              <div class="card-date">Pending NeurIPS 2025</div>
+            </div>
+          </div>
+          <p class="card-description">
+            Established regret lower bounds for noisy multi-objective RL settings.
+          </p>
+          <div class="tags">
+            <span class="tag">Theoretical ML</span>
+            <span class="tag">Minimax Theory</span>
+            <span class="tag">Information Theory</span>
+            <span class="tag">Sample Complexity</span>
+            <span class="tag">Preference Learning</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Built on information-theoretic tools to show optimal sample complexity for learning Pareto frontiers with partial preferences.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="entry">
-    <div class="entry-title">Cybersecurity Authenticator for Underserved Schools</div>
-    <div class="entry-date">EdTech Conf. 2025</div>
-    <div class="entry-mentor">Mentored by Dr. Thomas Imboden, School of Computing at SIUC</div>
-    <p>Created low-cost MFA using Wazuh, Proxmox, Duo. Led deployment design.</p>
-    <div class="keywords">
-      <span class="keyword">Cybersecurity</span>
-      <span class="keyword">Multi-Factor Authentication</span>
-      <span class="keyword">Educational Technology</span>
-      <span class="keyword">Network Security</span>
-      <span class="keyword">Open Source</span>
-      <span class="keyword">K-12 Education</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Built to serve K–12 districts with zero licensing fees. Pilot launching in Fall 2025 at schools across rural Illinois.</p>
-    </div>
-  </div>
+    <section class="section animate-on-scroll">
+      <h3 class="section-title">Current Research</h3>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Cybersecurity Authenticator for Underserved Schools</h4>
+              <div class="card-date">EdTech Conf. 2025</div>
+            </div>
+          </div>
+          <p class="card-mentor">Mentored by Dr. Thomas Imboden, School of Computing at SIUC</p>
+          <p class="card-description">
+            Created low-cost MFA using Wazuh, Proxmox, Duo. Led deployment design.
+          </p>
+          <div class="tags">
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Multi-Factor Authentication</span>
+            <span class="tag">Educational Technology</span>
+            <span class="tag">Network Security</span>
+            <span class="tag">Open Source</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Built to serve K–12 districts with zero licensing fees. Pilot launching in Fall 2025 at schools across rural Illinois.</p>
+            </div>
+          </div>
+        </div>
 
-  <div class="entry">
-    <div class="entry-title">Implicit Toxicity Detection in LLMs</div>
-    <div class="entry-date">Journal Submission In Progress</div>
-    <div class="entry-mentor">Mentored by Dr. Anas AlSobeh, School of Computing at SIUC</div>
-    <p>RLHF + SHAP + jailbreaking resistance.</p>
-    <div class="keywords">
-      <span class="keyword">Large Language Models</span>
-      <span class="keyword">Toxicity Detection</span>
-      <span class="keyword">RLHF</span>
-      <span class="keyword">Explainable AI</span>
-      <span class="keyword">AI Safety</span>
-      <span class="keyword">Adversarial Robustness</span>
-    </div>
-    <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
-    <div class="more-content">
-      <p>Detects toxic subtext and adversarial prompt exploits in large generative models. Employs explainable filtering to improve ethical safety layers.</p>
-    </div>
-  </div>
-</section>
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h4 class="card-title">Implicit Toxicity Detection in LLMs</h4>
+              <div class="card-date">Journal Submission In Progress</div>
+            </div>
+          </div>
+          <p class="card-mentor">Mentored by Dr. Anas AlSobeh, School of Computing at SIUC</p>
+          <p class="card-description">
+            RLHF + SHAP + jailbreaking resistance for enhanced AI safety.
+          </p>
+          <div class="tags">
+            <span class="tag">Large Language Models</span>
+            <span class="tag">Toxicity Detection</span>
+            <span class="tag">RLHF</span>
+            <span class="tag">Explainable AI</span>
+            <span class="tag">AI Safety</span>
+          </div>
+          <button class="expand-btn" onclick="toggleExpand(this)">Learn More</button>
+          <div class="expanded-content">
+            <div class="expanded-inner">
+              <p>Detects toxic subtext and adversarial prompt exploits in large generative models. Employs explainable filtering to improve ethical safety layers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<footer>
-  &copy; 2025 Aarav Lala · Powered by GitHub Pages
-</footer>
+  <footer>
+    <p>&copy; 2025 Aarav Lala · Powered by Innovation</p>
+  </footer>
 
-<script>
-  // Toggle "Learn More" content
-  function toggleContent(button) {
-    const content = button.nextElementSibling;
-    const isVisible = content.style.display === "block";
-    content.style.display = isVisible ? "none" : "block";
-    button.textContent = isVisible ? "Learn More" : "Show Less";
-  }
+  <script>
+    function toggleExpand(button) {
+      const content = button.nextElementSibling;
+      const isExpanded = content.classList.contains('show');
+      
+      if (isExpanded) {
+        content.classList.remove('show');
+        button.textContent = 'Learn More';
+      } else {
+        content.classList.add('show');
+        button.textContent = 'Show Less';
+      }
+    }
 
-  // Theme toggle
-  const toggleBtn = document.getElementById('toggle-theme');
-  const iconMoon = document.getElementById('icon-moon');
-  const iconSun = document.getElementById('icon-sun');
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
 
-  // Load saved theme or default dark
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'light') {
-    document.body.classList.add('light-mode');
-    iconMoon.style.display = 'none';
-    iconSun.style.display = 'block';
-  }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, observerOptions);
 
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('light-mode');
-    const isLight = document.body.classList.contains('light-mode');
-    iconMoon.style.display = isLight ? 'none' : 'block';
-    iconSun.style.display = isLight ? 'block' : 'none';
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  });
-</script>
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      observer.observe(el);
+    });
 
+    // Stagger card animations
+    document.querySelectorAll('.card').forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+    });
+  </script>
 </body>
 </html>
