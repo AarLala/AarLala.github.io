@@ -81,6 +81,27 @@
       font-size: 0.9rem;
       transition: color 0.4s ease;
     }
+    .entry-mentor {
+      font-size: 0.9rem;
+      color: #87ceeb;
+      margin-top: 0.3rem;
+      transition: color 0.4s ease;
+    }
+    .keywords {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .keyword {
+      background: rgba(0, 247, 255, 0.15);
+      color: var(--accent-dark);
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(0, 247, 255, 0.3);
+      transition: all 0.4s ease;
+    }
     a {
       color: var(--link-dark);
       text-decoration: none;
@@ -155,6 +176,14 @@
     }
     body.light-mode .entry-date {
       color: #555;
+    }
+    body.light-mode .entry-mentor {
+      color: #2c5f78;
+    }
+    body.light-mode .keyword {
+      background: rgba(0, 119, 204, 0.15);
+      color: var(--accent-light);
+      border-color: rgba(0, 119, 204, 0.3);
     }
     body.light-mode a {
       color: var(--link-light);
@@ -254,23 +283,39 @@
 <div class="entry">
   <div class="entry-title">Caterpillar iOS Internship</div>
   <div class="entry-date">May–July 2021 · 6 hrs/week</div>
-  <p>Developed an industrial-grade “Spotter’s Guide” iOS app using Swift and Xcode, surpassing 5,000 downloads by field engineers.</p>
+  <p>Developed an industrial-grade "Spotter's Guide" iOS app using Swift and Xcode, surpassing 5,000 downloads by field engineers.</p>
+  <div class="keywords">
+    <span class="keyword">iOS Development</span>
+    <span class="keyword">Swift</span>
+    <span class="keyword">Xcode</span>
+    <span class="keyword">Mobile Applications</span>
+    <span class="keyword">Industrial Software</span>
+    <span class="keyword">Database Integration</span>
+  </div>
   <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
   <div class="more-content">
     <p>
-      Enabled real-time equipment identification in construction zones by integrating Caterpillar’s product database with robust auto-layout practices. Created a comprehensive machinery specification database for easy access. The app is currently live on the Google Play Store: <a href="https://play.google.com/store/apps/details?id=com.cat.catdigital.mobile.spottersguide&hl=en_US" target="_blank" rel="noopener noreferrer">Spotter’s Guide on Google Play</a>.
+      Enabled real-time equipment identification in construction zones by integrating Caterpillar's product database with robust auto-layout practices. Created a comprehensive machinery specification database for easy access. The app is currently live on the Google Play Store: <a href="https://play.google.com/store/apps/details?id=com.cat.catdigital.mobile.spottersguide&hl=en_US" target="_blank" rel="noopener noreferrer">Spotter's Guide on Google Play</a>.
     </p>
   </div>
 </div>
 
-
   <div class="entry">
     <div class="entry-title">UIUC Youth Wellness Program</div>
     <div class="entry-date">Summer 2022 · 10 hrs/week</div>
+    <div class="entry-mentor">Mentored by Samyra Leonard, UIUC Public Health Department</div>
     <p>Researched large language models to identify linguistic markers of healthcare inequality.</p>
+    <div class="keywords">
+      <span class="keyword">Large Language Models</span>
+      <span class="keyword">Natural Language Processing</span>
+      <span class="keyword">Healthcare Inequality</span>
+      <span class="keyword">Bias Detection</span>
+      <span class="keyword">Medical Communication</span>
+      <span class="keyword">Public Health</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
-      <p>Worked with hospitals in Peoria to understand how language affects healthcare outcomes. Built NLP pipelines for bias detection in medical communication. Mentored by Samyra Leonard from the UIUC Public Health Departmnet. Recieved Stipend of $600</p>
+      <p>Worked with hospitals in Peoria to understand how language affects healthcare outcomes. Built NLP pipelines for bias detection in medical communication. Received stipend of $600.</p>
     </div>
   </div>
 
@@ -278,6 +323,14 @@
     <div class="entry-title">Edquill EdTech Internship</div>
     <div class="entry-date">June–August 2022 · 10–15 hrs/week</div>
     <p>Led video production and multimedia strategy for an early-stage EdTech startup.</p>
+    <div class="keywords">
+      <span class="keyword">EdTech</span>
+      <span class="keyword">Video Production</span>
+      <span class="keyword">Multimedia Strategy</span>
+      <span class="keyword">Content Creation</span>
+      <span class="keyword">Educational Technology</span>
+      <span class="keyword">Startup</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
       <p>Created tutorials and interactive demos used by thousands of users. Also mentored the founder on editing and content scaling strategies.</p>
@@ -293,6 +346,14 @@
     <div class="entry-date">ICMLT Europe 2025</div>
     <p>Presented as the youngest in conference history. Cited in ongoing neural compression studies.<br>
     <a href="https://arxiv.org/abs/2504.20078">arxiv.org/abs/2504.20078</a></p>
+    <div class="keywords">
+      <span class="keyword">Neural Network Compression</span>
+      <span class="keyword">Low-Rank Matrix Approximation</span>
+      <span class="keyword">Singular Value Decomposition</span>
+      <span class="keyword">Deep Learning</span>
+      <span class="keyword">Model Optimization</span>
+      <span class="keyword">Computer Vision</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
       <p>Applied SVD-based factorization for compressing deep layers without accuracy loss. Validated on CIFAR and ImageNet models.</p>
@@ -304,6 +365,14 @@
     <div class="entry-date">Pending NeurIPS 2025</div>
     <p>Proposed methods for robust multi-objective RL with preference uncertainty.<br>
     <a href="https://arxiv.org/abs/2505.11864">arxiv.org/abs/2505.11864</a></p>
+    <div class="keywords">
+      <span class="keyword">Reinforcement Learning</span>
+      <span class="keyword">Multi-Objective Optimization</span>
+      <span class="keyword">Pareto Optimization</span>
+      <span class="keyword">Preference Learning</span>
+      <span class="keyword">Robust Learning</span>
+      <span class="keyword">Decision Making</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
       <p>Extended preference-based learning to support dynamic reward tradeoffs under annotator disagreement</p>
@@ -315,9 +384,17 @@
     <div class="entry-date">Pending NeurIPS 2025</div>
     <p>Applied quantum search ideas to policy optimization in large MDPs.<br>
     <a href="https://arxiv.org/abs/2505.11862">arxiv.org/abs/2505.11862</a></p>
+    <div class="keywords">
+      <span class="keyword">Quantum Computing</span>
+      <span class="keyword">Reinforcement Learning</span>
+      <span class="keyword">Grover's Algorithm</span>
+      <span class="keyword">Policy Optimization</span>
+      <span class="keyword">Markov Decision Process</span>
+      <span class="keyword">Quantum Machine Learning</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
-      <p>Combines ideas from Grover’s algorithm with TD-learning to accelerate convergence in high-dimensional spaces.</p>
+      <p>Combines ideas from Grover's algorithm with TD-learning to accelerate convergence in high-dimensional spaces.</p>
     </div>
   </div>
 
@@ -326,6 +403,14 @@
     <div class="entry-date">2025</div>
     <p>Optimized decentralized model training with quantum-guided evolution.<br>
     <a href="https://arxiv.org/abs/2505.15836">arxiv.org/abs/2505.15836</a></p>
+    <div class="keywords">
+      <span class="keyword">Federated Learning</span>
+      <span class="keyword">Quantum Computing</span>
+      <span class="keyword">Evolutionary Algorithms</span>
+      <span class="keyword">Multi-Agent Systems</span>
+      <span class="keyword">Neural Networks</span>
+      <span class="keyword">Decentralized Learning</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
       <p>Outperformed baseline federated methods in low-bandwidth, multi-agent environments using hybrid mutation-based techniques.</p>
@@ -335,10 +420,19 @@
   <div class="entry">
     <div class="entry-title">Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</div>
     <div class="entry-date">Pending ACM-BCB 2025</div>
-    <p>Analyzed 25,000+ YouTube comments using LLMs and sentiment clustering. Mentored by CMU’s Dr. Ashiqur Khudabuksh.</p>
+    <div class="entry-mentor">Mentored by Dr. Ashiqur Khudabuksh, Golisano College of Computing and Information Sciences (GCCIS) & PhD Student Soumyajit Datta, Computational Social Science and Linguistics</div>
+    <p>Analyzed 25,000+ YouTube comments using LLMs and sentiment clustering.</p>
+    <div class="keywords">
+      <span class="keyword">Large Language Models</span>
+      <span class="keyword">Sentiment Analysis</span>
+      <span class="keyword">Computational Social Science</span>
+      <span class="keyword">Healthcare Analytics</span>
+      <span class="keyword">Social Media Mining</span>
+      <span class="keyword">Public Health</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
-      <p>Results revealed key differences between clinical results and public perception. Motivated by a family member’s experience with Ozempic.</p>
+      <p>Results revealed key differences between clinical results and public perception. Motivated by a family member's experience with Ozempic.</p>
     </div>
   </div>
 
@@ -346,6 +440,14 @@
     <div class="entry-title">Minimax Complexity of Preference-Based Decision Making</div>
     <div class="entry-date">Pending NeurIPS 2025</div>
     <p>Established regret lower bounds for noisy multi-objective RL settings.</p>
+    <div class="keywords">
+      <span class="keyword">Theoretical Machine Learning</span>
+      <span class="keyword">Minimax Theory</span>
+      <span class="keyword">Information Theory</span>
+      <span class="keyword">Sample Complexity</span>
+      <span class="keyword">Preference Learning</span>
+      <span class="keyword">Multi-Objective Learning</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
       <p>Built on information-theoretic tools to show optimal sample complexity for learning Pareto frontiers with partial preferences.</p>
@@ -359,7 +461,16 @@
   <div class="entry">
     <div class="entry-title">Cybersecurity Authenticator for Underserved Schools</div>
     <div class="entry-date">EdTech Conf. 2025</div>
-    <p>Created low-cost MFA using Wazuh, Proxmox, Duo. Led deployment design. Mentored by Dr. Imboden (SIUC).</p>
+    <div class="entry-mentor">Mentored by Dr. Thomas Imboden, School of Computing at SIUC</div>
+    <p>Created low-cost MFA using Wazuh, Proxmox, Duo. Led deployment design.</p>
+    <div class="keywords">
+      <span class="keyword">Cybersecurity</span>
+      <span class="keyword">Multi-Factor Authentication</span>
+      <span class="keyword">Educational Technology</span>
+      <span class="keyword">Network Security</span>
+      <span class="keyword">Open Source</span>
+      <span class="keyword">K-12 Education</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
       <p>Built to serve K–12 districts with zero licensing fees. Pilot launching in Fall 2025 at schools across rural Illinois.</p>
@@ -369,7 +480,16 @@
   <div class="entry">
     <div class="entry-title">Implicit Toxicity Detection in LLMs</div>
     <div class="entry-date">Journal Submission In Progress</div>
-    <p>RLHF + SHAP + jailbreaking resistance. Mentored by Dr. Alsobeh (SIUC).</p>
+    <div class="entry-mentor">Mentored by Dr. Anas AlSobeh, School of Computing at SIUC</div>
+    <p>RLHF + SHAP + jailbreaking resistance.</p>
+    <div class="keywords">
+      <span class="keyword">Large Language Models</span>
+      <span class="keyword">Toxicity Detection</span>
+      <span class="keyword">RLHF</span>
+      <span class="keyword">Explainable AI</span>
+      <span class="keyword">AI Safety</span>
+      <span class="keyword">Adversarial Robustness</span>
+    </div>
     <button class="learn-more-btn" onclick="toggleContent(this)">Learn More</button>
     <div class="more-content">
       <p>Detects toxic subtext and adversarial prompt exploits in large generative models. Employs explainable filtering to improve ethical safety layers.</p>
