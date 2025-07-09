@@ -1,157 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Aarav Lala | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Inter', sans-serif;
       margin: 0;
-      padding: 0;
-      background: #f9fafb;
-      color: #111827;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0e0e10;
+      color: #eaeaea;
+      line-height: 1.6;
     }
-
     header {
-      background: linear-gradient(120deg, #6366f1, #3b82f6);
-      color: white;
-      padding: 4rem 1rem;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      padding: 2rem;
       text-align: center;
     }
-
     header h1 {
-      font-size: 3rem;
       margin: 0;
+      font-size: 2.5rem;
+      color: #00f7ff;
     }
-
-    header p {
-      font-size: 1.25rem;
+    header h2 {
       margin-top: 0.5rem;
+      font-weight: 300;
+      color: #b0e0e6;
     }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      background: white;
-      padding: 1rem;
-      position: sticky;
-      top: 0;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      z-index: 999;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #1f2937;
-      font-weight: bold;
-    }
-
     section {
-      padding: 2rem 1rem;
+      padding: 2rem 5%;
       max-width: 1000px;
-      margin: 0 auto;
+      margin: auto;
     }
-
-    h2 {
-      border-bottom: 2px solid #6366f1;
-      display: inline-block;
-      margin-bottom: 1rem;
+    h3 {
+      color: #00ffe1;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
     }
-
-    .card {
-      background: white;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    .entry {
+      margin-bottom: 1.5rem;
     }
-
+    .entry-title {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #fffc99;
+    }
+    .entry-date {
+      font-style: italic;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+    a {
+      color: #1ecbe1;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
     footer {
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem;
+      color: #666;
       font-size: 0.9rem;
-      color: #6b7280;
+    }
+    .links {
+      margin-top: 1rem;
+    }
+    .links a {
+      margin: 0 1rem;
+      color: #ccc;
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>Aarav Lala</h1>
-    <p>Junior @ Illinois Mathematics and Science Academy | Aspiring Innovator in CS & Medicine</p>
-    <p><a href="https://www.linkedin.com/in/aarav-lala/" style="color: white; text-decoration: underline;">LinkedIn</a></p>
-  </header>
 
-  <nav>
-    <a href="#skills">Skills</a>
-    <a href="#resume">Resume</a>
-    <a href="#projects">Projects</a>
-    <a href="#awards">Awards</a>
-    <a href="#experience">Experience</a>
-    <a href="#activities">Activities</a>
-  </nav>
+<header>
+  <h1>Aarav Lala</h1>
+  <h2>Senior @ Illinois Mathematics and Science Academy</h2>
+  <div class="links">
+    <a href="mailto:alala1@imsa.edu">Email</a>
+    <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank">LinkedIn</a>
+    <a href="https://orcid.org/YOUR_ORCID" target="_blank">ORCID</a>
+    <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar</a>
+  </div>
+</header>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="card">
-      <p><strong>Languages:</strong> English, Hindi, Gujarati, Sanskrit, French, Spanish</p>
-      <p><strong>Technical:</strong> Swift, XCode, Natural Language Processing, Algorithm Design</p>
-    </div>
-  </section>
+<section>
+  <h3>Internships & Research</h3>
 
-  <section id="resume">
-    <h2>Resume</h2>
-    <div class="card">
-      <p>Click below to view or download my resume:</p>
-      <a href="assets/Aarav_Lala_Resume.pdf" target="_blank">Download Resume</a>
-    </div>
-  </section>
+  <div class="entry">
+    <div class="entry-title">Caterpillar iOS Internship</div>
+    <div class="entry-date">May–July 2021 · 6 hrs/week</div>
+    <p>Developed an industrial-grade “Spotter’s Guide” iOS app using Swift and Xcode. Surpassed 1,000+ downloads by field engineers. Built for rapid field identification of machinery types in construction zones.</p>
+  </div>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="card">
-      <p><strong>TalkTabs:</strong> A mental health startup using NLP to summarize content with bias detection.</p>
-      <p><strong>Caterpillar App:</strong> Developed iOS app with over 1,000 downloads to help clients of CATERPILLAR easily navigate a database of all machinery and their speculations.</p>
-    </div>
-  </section>
+  <div class="entry">
+    <div class="entry-title">UIUC Youth Wellness Program</div>
+    <div class="entry-date">Summer 2022 · 10 hrs/week</div>
+    <p>Researched large language models to identify linguistic markers of healthcare inequality. Collaborated with Peoria-based hospitals to explore language-based diagnostics for rural and underserved communities.</p>
+  </div>
 
-  <section id="awards">
-    <h2>Awards</h2>
-    <div class="card">
-      <p>USACO Gold & Silver Qualifier, 4x AIME, AMC 10/12 top 5%, IL Personal Finance Olympiad 3rd Place, FermiLab Pitch Finalist, Alabama Chess Champion.</p>
-    </div>
-  </section>
+  <div class="entry">
+    <div class="entry-title">Edquill EdTech Internship</div>
+    <div class="entry-date">June–August 2022 · 10–15 hrs/week</div>
+    <p>Led video production and multimedia strategy for an early-stage EdTech startup. Mentored the founder in editing workflows and content pipeline optimization.</p>
+  </div>
+</section>
 
-  <section id="experience">
-    <h2>Experience</h2>
-    <div class="card">
-      <ul>
-        <li>Neuromorphic SSD simulation using Hodgkin-Huxley Neurons</li>
-        <li>Researched into Ozempic and the general publics stance on the drug. Trained a BERT and Mistral Classifier.</li>
-        <li>Researched bacteria inhibition to test school's safety in gym, lockerrooms, and water fountains.</li>
-        <li>Optimzed SVD matrices using a novel algorithm, ARSVD.</li>
-      </ul>
-    </div>
-  </section>
+<section>
+  <h3>Published Research</h3>
 
-  <section id="activities">
-    <h2>Internships & Activities</h2>
-    <div class="card">
-      <ul>
-        <li>UIUC Youth Wellness Project Intern</li>
-        <li>NIU Business Olympics – 1st Place</li>
-        <li>Taco Bell Innovation Accelerator Participant</li>
-      </ul>
-    </div>
-  </section>
+  <div class="entry">
+    <div class="entry-title">Low-Rank Matrix Approximation for Neural Network Compression</div>
+    <div class="entry-date">ICMLT Europe 2025</div>
+    <p>Accepted and presented as the youngest presenter in conference history. Proposed a novel compression technique; cited in active compression model research. <br>
+    <a href="https://arxiv.org/abs/2504.20078">arxiv.org/abs/2504.20078</a></p>
+  </div>
 
-  <footer>
-    <p>Made by Aarav Lala | IMSA Junior</p>
-  </footer>
+  <div class="entry">
+    <div class="entry-title">Learning Pareto-Optimal Rewards from Noisy Preferences</div>
+    <div class="entry-date">NeurIPS 2025</div>
+    <p>Developed robust reward learning from uncertain human feedback. <br>
+    <a href="https://arxiv.org/abs/2505.11864">arxiv.org/abs/2505.11864</a></p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Q-Policy: Quantum-Enhanced RL Evaluation</div>
+    <div class="entry-date">NeurIPS 2025</div>
+    <p>Introduced quantum-inspired policy evaluation for faster convergence in RL environments. <br>
+    <a href="https://arxiv.org/abs/2505.11862">arxiv.org/abs/2505.11862</a></p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Quantum-Evolutionary Neural Networks for Multi-Agent Federated Learning</div>
+    <div class="entry-date">2025</div>
+    <p>Fusion of quantum search principles with evolutionary AI for federated learning on edge devices. <br>
+    <a href="https://arxiv.org/abs/2505.15836">arxiv.org/abs/2505.15836</a></p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</div>
+    <div class="entry-date">ACM-BCB 2025</div>
+    <p>Inspired by a personal story—uses computational social science and LLMs to evaluate public sentiment on Ozempic across YouTube. Mentored by Dr. Ashiqur Khudabuksh (CMU).<br>
+    <i>Accepted for presentation</i></p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">The Minimax Complexity of Preference-Based Decision Making in Multi-Objective RL</div>
+    <div class="entry-date">NeurIPS 2025</div>
+    <p>Mathematical proof for regret bounds in noisy multi-objective optimization.</p>
+  </div>
+</section>
+
+<section>
+  <h3>Current Research</h3>
+
+  <div class="entry">
+    <div class="entry-title">Cybersecurity Authenticator for Underserved Schools</div>
+    <div class="entry-date">EdTech Conf. 2025</div>
+    <p>Building an open-source, school-safe alternative to MS Authenticator using Wazuh, Proxmox, and Duo. Designed to be low-cost and scalable. Mentored by Dr. Imboden (SIUC).</p>
+  </div>
+
+  <div class="entry">
+    <div class="entry-title">Implicit Toxicity Detection in LLMs</div>
+    <div class="entry-date">Journal Publication In Progress</div>
+    <p>Designing RLHF + XAI methods to flag and reduce adversarial jailbreak outputs in LLMs. Combines novel dataset curation with robust interpretability. Mentored by Dr. Alsobeh (SIUC).</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Aarav Lala · Powered by GitHub Pages
+</footer>
+
 </body>
-
 </html>
