@@ -10,85 +10,330 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* -------- Polished color system -------- */
     :root {
-      --bg:#0b0c12;          /* deeper blue-black for richer contrast */
-      --bg2:#101321;         /* smoother gradient base */
-      --panel:#121423;
-      --glass:rgba(255,255,255,.045);
-      --border:rgba(255,255,255,.11);
-      --text:#EEF2F7;        /* slightly brighter text */
-      --muted:#A7AFBE;       /* softened gray-blue */
-      --primary:#3AF6FF;     /* brighter cyan */
-      --secondary:#FF5B9B;   /* rosier magenta */
-      --accent:#7E6BFF;      /* calmer violet */
-      --radius:20px;
-      --shadow:0 12px 40px rgba(3,8,20,.45);
-      --focus:0 0 0 6px rgba(58,246,255,.12);
+      --bg:#0a0b11;
+      --bg2:#0f1018;
+      --panel:#14151f;
+      --glass:rgba(255,255,255,.05);
+      --border:rgba(255,255,255,.12);
+      --text:#f0f3f7;
+      --muted:#a2aab8;
+      --primary:#3af6ff;
+      --secondary:#ff5b9b;
+      --accent:#7e6bff;
+      --radius:18px;
+      --shadow:0 16px 48px rgba(0,0,0,.4);
+      --focus:0 0 0 4px rgba(58,246,255,.15);
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:80px}
     body{
-      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; line-height:1.6;
+      min-height:100vh;
+      font-family:Inter,system-ui,-apple-system,sans-serif;
+      line-height:1.65;
       background:
-        radial-gradient(1200px 600px at 12% 10%, rgba(58,246,255,.10), transparent 60%),
-        radial-gradient(900px 500px at 88% 15%, rgba(255,91,155,.10), transparent 60%),
-        radial-gradient(900px 500px at 30% 90%, rgba(126,107,255,.10), transparent 60%),
+        radial-gradient(ellipse 1400px 700px at 10% 8%, rgba(58,246,255,.08), transparent 65%),
+        radial-gradient(ellipse 1000px 600px at 90% 12%, rgba(255,91,155,.09), transparent 65%),
+        radial-gradient(ellipse 1100px 650px at 25% 92%, rgba(126,107,255,.08), transparent 65%),
         linear-gradient(180deg,var(--bg),var(--bg2));
+      background-attachment:fixed;
       color:var(--text);
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
     }
-    .container{width:min(1100px,92vw);margin:0 auto}
-    a{color:var(--text); text-underline-offset:3px; text-decoration-color: rgba(255,255,255,.25)}
-    a:hover{ text-decoration-color: var(--primary) }
-    :focus-visible{ outline:none; box-shadow: var(--focus) }
-
-    /* Header & nav */
-    header.sticky{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(4,7,16,.55),rgba(4,7,16,.2),transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-    nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.9rem 0}
-    .brand{letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--text);text-decoration:none}
-    nav .links{display:flex;gap:.8rem;flex-wrap:wrap}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600;padding:.55rem .8rem;border-radius:10px}
-    nav a:hover,nav a.active{color:var(--text);background:var(--glass);border:1px solid var(--border)}
-
+    
+    .container{width:min(1140px,94vw);margin:0 auto}
+    
+    a{
+      color:var(--primary);
+      text-underline-offset:3px;
+      text-decoration-color:rgba(58,246,255,.3);
+      transition:all .2s ease;
+    }
+    a:hover{
+      text-decoration-color:var(--primary);
+      color:#5ffaff;
+    }
+    :focus-visible{outline:none;box-shadow:var(--focus)}
+    
+    /* Header */
+    header.sticky{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:linear-gradient(180deg,rgba(10,11,17,.92),rgba(10,11,17,.75),transparent);
+      backdrop-filter:blur(16px) saturate(180%);
+      border-bottom:1px solid var(--border);
+      animation:slideDown .4s ease;
+    }
+    @keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+    
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1.5rem;
+      padding:1rem 0;
+    }
+    
+    .brand{
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:800;
+      font-size:.95rem;
+      color:var(--text);
+      text-decoration:none;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      transition:filter .3s ease;
+    }
+    .brand:hover{filter:brightness(1.2)}
+    
+    nav .links{display:flex;gap:.5rem;flex-wrap:wrap}
+    nav a:not(.brand){
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      font-size:.9rem;
+      padding:.6rem .95rem;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition:all .25s ease;
+      position:relative;
+    }
+    nav a:not(.brand):hover{
+      color:var(--text);
+      background:var(--glass);
+      border-color:var(--border);
+      transform:translateY(-1px);
+    }
+    nav a.active{
+      color:var(--primary);
+      background:rgba(58,246,255,.06);
+      border-color:rgba(58,246,255,.2);
+    }
+    
     /* Buttons */
-    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-radius:14px;font-weight:700;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));color:var(--text);text-decoration:none;transition:.25s transform,.25s box-shadow}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(58,246,255,.12)}
-    .btn.primary{color:#06141a;background:linear-gradient(90deg,var(--primary),var(--secondary));border:none}
-
-    /* Layout */
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center;padding:3.8rem 0 2rem}
-    .hero h1{font-size:clamp(2.25rem,4.8vw,3.9rem);line-height:1.05;margin:.35rem 0 .6rem;background:linear-gradient(90deg,var(--primary),var(--secondary) 55%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .hero p{color:var(--muted);font-size:1.05rem}
-
-    .glass{background:var(--glass);border:1px solid var(--border);backdrop-filter:blur(8px);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .col-12{grid-column:span 12}.col-8{grid-column:span 8}.col-6{grid-column:span 6}.col-4{grid-column:span 4}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.col-8,.col-6,.col-4{grid-column:span 12}}
-
-    section{padding:2.5rem 0}
-    .section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem}
-    .section-title h2{font-size:1.6rem; letter-spacing:.2px}
-
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+      padding:.9rem 1.3rem;
+      border-radius:14px;
+      font-weight:700;
+      font-size:.9rem;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
+      color:var(--text);
+      text-decoration:none;
+      transition:all .3s cubic-bezier(.4,0,.2,1);
+      position:relative;
+      overflow:hidden;
+    }
+    .btn::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(58,246,255,.1),transparent);
+      opacity:0;
+      transition:opacity .3s ease;
+    }
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 12px 32px rgba(58,246,255,.15);
+      border-color:rgba(58,246,255,.3);
+    }
+    .btn:hover::before{opacity:1}
+    .btn.primary{
+      color:#05141c;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      border:none;
+      box-shadow:0 8px 24px rgba(58,246,255,.2);
+    }
+    .btn.primary:hover{
+      box-shadow:0 12px 36px rgba(58,246,255,.35);
+      transform:translateY(-3px) scale(1.02);
+    }
+    
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:2.5rem;
+      align-items:center;
+      padding:4.5rem 0 3rem;
+      animation:fadeInUp .8s ease;
+    }
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    
+    .hero h1{
+      font-size:clamp(2.5rem,5vw,4.2rem);
+      line-height:1.05;
+      margin:.4rem 0 .8rem;
+      background:linear-gradient(120deg,var(--primary),var(--secondary) 45%,var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .hero p{
+      color:var(--muted);
+      font-size:1.1rem;
+      line-height:1.7;
+      max-width:640px;
+    }
+    
+    .glass{
+      background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      backdrop-filter:blur(12px) saturate(150%);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .glass::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+    }
+    
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.2rem}
+    .col-12{grid-column:span 12}
+    .col-8{grid-column:span 8}
+    .col-6{grid-column:span 6}
+    .col-4{grid-column:span 4}
+    
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;gap:2rem}
+      .col-8,.col-6,.col-4{grid-column:span 12}
+      nav{flex-direction:column;align-items:stretch}
+      nav .links{justify-content:center}
+    }
+    
+    section{padding:3.5rem 0}
+    .section-title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:1.5rem;
+      gap:1rem;
+    }
+    .section-title h2{
+      font-size:2rem;
+      letter-spacing:-.01em;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--text),var(--muted));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    
     /* Cards */
-    .card{position:relative;border-radius:var(--radius);border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));overflow:hidden}
-    .pad{padding:1.1rem}
+    .card{
+      position:relative;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      overflow:hidden;
+      transition:all .35s cubic-bezier(.4,0,.2,1);
+    }
+    .card::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(58,246,255,.08), transparent 50%);
+      opacity:0;
+      transition:opacity .3s ease;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(58,246,255,.25);
+      box-shadow:0 20px 60px rgba(0,0,0,.3);
+    }
+    .card:hover::before{opacity:1}
+    
+    .pad{padding:1.5rem;position:relative;z-index:1}
+    .card h3{
+      font-size:1.25rem;
+      margin-bottom:.6rem;
+      font-weight:700;
+      line-height:1.3;
+    }
     .muted{color:var(--muted)}
-    .tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.6rem}
-    .tag{padding:.35rem .65rem;border-radius:999px;background:rgba(58,246,255,.08);border:1px solid rgba(58,246,255,.25);color:var(--primary);font-weight:700;font-size:.78rem}
-    .venue{font-weight:800;color:#FFE6EE;background:rgba(255,91,155,.14);border:1px solid rgba(255,91,155,.36)}
-
-    .kicker{letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--muted);font-size:.82rem}
-    .reveal{opacity:0;transform:translateY(12px);transition:.6s opacity,.6s transform}
-    .reveal.show{opacity:1;transform:none}
-    @media (prefers-reduced-motion:reduce){.reveal,.btn,.card{transition:none!important}}
+    
+    .tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
+    .tag{
+      padding:.4rem .8rem;
+      border-radius:999px;
+      background:rgba(58,246,255,.08);
+      border:1px solid rgba(58,246,255,.25);
+      color:var(--primary);
+      font-weight:700;
+      font-size:.8rem;
+      transition:all .2s ease;
+    }
+    .tag:hover{
+      background:rgba(58,246,255,.12);
+      border-color:rgba(58,246,255,.4);
+      transform:translateY(-1px);
+    }
+    .venue{
+      font-weight:800;
+      color:#ffe8ef;
+      background:rgba(255,91,155,.12);
+      border:1px solid rgba(255,91,155,.35);
+    }
+    
+    .kicker{
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:800;
+      color:var(--muted);
+      font-size:.85rem;
+      display:inline-block;
+      margin-bottom:.5rem;
+    }
+    
+    /* Animations */
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:opacity .7s ease,transform .7s ease;
+    }
+    .reveal.show{opacity:1;transform:translateY(0)}
+    
+    hr{border:none;border-top:1px solid var(--border);margin:0}
+    
+    ul{line-height:1.8}
+    
+    footer{
+      padding:3rem 0;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+      text-align:center;
+      font-size:.9rem;
+    }
+    
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+    }
   </style>
 </head>
 <body>
   <header class="sticky">
     <div class="container">
       <nav>
-        <a class="brand" href="#top">AARAV LALA</a>
+        <a class="brand" href="#top">Aarav Lala</a>
         <div class="links">
           <a href="#research">Research</a>
           <a href="#experience">Internships</a>
@@ -102,71 +347,65 @@
 
   <main id="top" class="container">
     <!-- HERO -->
-    <section class="hero glass reveal">
+    <section class="hero">
       <div>
         <span class="kicker">Machine Learning • Theory • Systems</span>
         <h1>Aarav Lala</h1>
         <p>I build practical ML systems grounded in theory—model compression, information‑theoretic limits, scaling laws, attention–field geometry, and healthcare NLP. Previously shipped industrial iOS and large‑scale data pipelines.</p>
-        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem">
-          <a class="btn primary" href="#research">View research</a>
+        <div style="display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.3rem">
+          <a class="btn primary" href="#research">View Research</a>
           <a class="btn" href="mailto:aaravh.lala@gmail.com">Email</a>
           <a class="btn" href="https://www.linkedin.com/in/aarav-lala" target="_blank" rel="noopener">LinkedIn</a>
           <a class="btn" href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
         </div>
       </div>
-      <div class="card">
+      <div class="glass">
         <div class="pad">
-          <h3 style="margin:.1rem 0 .3rem">Highlights</h3>
+          <h3 style="margin:.2rem 0 .5rem">Highlights</h3>
           <p class="muted" style="margin:0">NeurIPS workshops (Lock‑LLM, ARLET, NeurReps, Evolving LLM Lifecycle); ICMLT talk (to IEEE journal).</p>
         </div>
-        <hr style="border:none;border-top:1px solid var(--border)">
+        <hr>
         <div class="pad">
-          <h3 style="margin:.1rem 0 .3rem">Teaching & Outreach</h3>
+          <h3 style="margin:.2rem 0 .5rem">Teaching & Outreach</h3>
           <p class="muted" style="margin:0">USACO to Gold; AMC/AIME prep; reviewer for multiple NeurIPS workshops.</p>
         </div>
       </div>
     </section>
 
-    <!-- RESEARCH FIRST -->
+    <!-- RESEARCH -->
     <section id="research" class="reveal">
       <div class="section-title"><h2>Research</h2></div>
       <div class="grid">
-        <!-- Low-Rank / ARSVD -->
         <article class="col-12 card"><div class="pad">
           <h3>Low‑Rank Matrix Approximation for Neural Network Compression</h3>
           <p class="muted">Introduces <strong>Adaptive‑Rank SVD (ARSVD)</strong>, selecting layer ranks via <em>spectral entropy</em> to preserve information content. Outperforms fixed‑rank SVD on ResNet18, VGG16, InceptionV3 with stronger compression–accuracy trade‑offs.</p>
           <div class="tags"><span class="tag venue">ICMLT 2025 (presented) → IEEE journal (in process)</span><span class="tag">SVD</span><span class="tag">Spectral Entropy</span><span class="tag">PyTorch</span><span class="tag">Model Compression</span></div>
         </div></article>
 
-        <!-- Distillation Limits -->
         <article class="col-12 card"><div class="pad">
           <h3>Fundamental Limits of Language Model Distillation under Stochastic Output Perturbations</h3>
           <p class="muted">Information‑theoretic lower bounds for black‑box distillation with randomized outputs. A Fano‑style bound ties per‑query mutual information to irreducible error; under uniform mixing with noise <em>p</em>, query complexity scales as <strong>(1−p)<sup>−2</sup></strong>.</p>
           <div class="tags"><span class="tag venue">NeurIPS 2025 — Lock‑LLM Workshop (accepted)</span><span class="tag">Mutual Information</span><span class="tag">Fano Bound</span><span class="tag">Model Extraction</span></div>
         </div></article>
 
-        <!-- Minimax Preference MO-RL -->
         <article class="col-12 card"><div class="pad">
           <h3>The Minimax Complexity of Preference‑Based Decision Making in Multi‑Objective RL</h3>
           <p class="muted">Decision‑theoretic framework that minimizes <strong>utility regret</strong> from pairwise preferences—no reward recovery. Proves tight lower bounds governed by Pareto‑front geometry and matches them with a query‑efficient algorithm.</p>
           <div class="tags"><span class="tag venue">NeurIPS 2025 — ARLET Workshop (accepted)</span><span class="tag">Minimax</span><span class="tag">Regret Bounds</span><span class="tag">Pareto Front</span></div>
         </div></article>
 
-        <!-- Neural Fields ↔ Attention -->
         <article class="col-12 card"><div class="pad">
           <h3>Neural Fields Meet Attention</h3>
           <p class="muted">Proves <strong>affine equivariance</strong> for Transformer operators with relative encodings + normalization, and an <strong>attention–gradient identity</strong>: linear attention computes exact negative gradients for sinusoidal fields; softmax attention converges at O(τ<sup>−2</sup>).</p>
           <div class="tags"><span class="tag venue">NeurIPS 2025 — NeurReps Proceedings (accepted)</span><span class="tag">Equivariance</span><span class="tag">Linear Attention</span><span class="tag">Geometry</span></div>
         </div></article>
 
-        <!-- Phase‑Transitional Scaling -->
         <article class="col-12 card"><div class="pad">
           <h3>Phase‑Transitional Scaling</h3>
           <p class="muted">Models emergent abilities as phase transitions with a sigmoid response. Threshold T<sub>K</sub> tracks data complexity; sharpness γ<sub>K</sub> reflects training dynamics. Achieves universal curve collapse and 4× better out‑of‑sample prediction than power‑law baselines.</p>
           <div class="tags"><span class="tag venue">NeurIPS 2025 — Evolving LLM Lifecycle Workshop (accepted)</span><span class="tag">Scaling Laws</span><span class="tag">Statistical Physics</span><span class="tag">Emergent Abilities</span></div>
         </div></article>
 
-        <!-- Ozempic / Social Web Stance -->
         <article class="col-12 card"><div class="pad">
           <h3>Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</h3>
           <p class="muted">206k YouTube comments; balanced annotations for first‑person vs vicarious experiences. Fine‑tuned BERT & Mistral‑7B for stance/sentiment; digestive side‑effects dominate adverse reports; public narrative diverges from clinical framing.</p>
@@ -175,14 +414,14 @@
       </div>
     </section>
 
-    <!-- INTERNSHIPS AFTER RESEARCH -->
+    <!-- INTERNSHIPS -->
     <section id="experience" class="reveal">
       <div class="section-title"><h2>Internships</h2><span class="kicker">systems & data engineering</span></div>
       <div class="grid">
         <div class="col-8 card"><div class="pad">
           <h3>Quantitative Developer Intern — Research Rebellion</h3>
           <p class="muted">Python • PostgreSQL • multithreading • BeautifulSoup</p>
-          <ul class="muted" style="margin:.5rem 0 0 1rem;line-height:1.6">
+          <ul class="muted" style="margin:.7rem 0 0 1.2rem">
             <li>Built SEC filings pipeline across 7,000+ companies; curated 210k 10‑K reports; 5× faster downloads.</li>
             <li>Integrated dataset with trading research; scheduled ETL and schema design for long‑horizon backtests.</li>
           </ul>
@@ -190,22 +429,22 @@
         <div class="col-4 card"><div class="pad">
           <h3>Software App Dev Intern — Caterpillar</h3>
           <p class="muted">Swift/SwiftUI • Xcode • on‑device search</p>
-          <ul class="muted" style="margin:.5rem 0 0 1rem;line-height:1.6">
-            <li>Shipped <em>Spotter’s Guide</em> v1 for dealer machinery specs; cross‑platform usage &gt; 5,000.</li>
+          <ul class="muted" style="margin:.7rem 0 0 1.2rem">
+            <li>Shipped <em>Spotter's Guide</em> v1 for dealer machinery specs; cross‑platform usage &gt; 5,000.</li>
             <li>Designed storage and optimized search for catalog queries.</li>
           </ul>
         </div></div>
         <div class="col-12 card"><div class="pad">
           <h3>Youth Wellness Intern — University of Illinois Urbana‑Champaign</h3>
           <p class="muted">NLP • bias/health equity</p>
-          <ul class="muted" style="margin:.5rem 0 0 1rem;line-height:1.6">
+          <ul class="muted" style="margin:.7rem 0 0 1.2rem">
             <li>Applied language models to characterize linguistic markers tied to healthcare disparities; stipend award.</li>
           </ul>
         </div></div>
       </div>
     </section>
 
-    <!-- NEW: AWARDS & ACHIEVEMENTS -->
+    <!-- AWARDS -->
     <section id="awards" class="reveal">
       <div class="section-title"><h2>Awards & Achievements</h2></div>
       <div class="grid">
@@ -222,7 +461,7 @@
     <section id="skills" class="reveal">
       <div class="section-title"><h2>Technical Skills</h2></div>
       <div class="card pad">
-        <div class="tags" style="gap:.55rem">
+        <div class="tags" style="gap:.65rem">
           <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">NumPy</span><span class="tag">Pandas</span>
           <span class="tag">C++</span><span class="tag">C#</span><span class="tag">Swift/SwiftUI</span><span class="tag">PostgreSQL</span>
           <span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">Proxmox</span><span class="tag">Wazuh</span>
@@ -248,24 +487,44 @@
       </div>
     </section>
 
-    <footer style="padding:2.5rem 0;color:var(--muted);border-top:1px solid var(--border)">
+    <footer>
       <div class="container">© <span id="year"></span> Aarav Lala · Research Portfolio</div>
     </footer>
   </main>
 
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Reveal on scroll
-    const obs = new IntersectionObserver((es)=>{for(const e of es){if(e.isIntersecting) e.target.classList.add('show')}},{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('show');
+      });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Scroll-spy
-    const links=[...document.querySelectorAll('nav .links a')];
-    const secs=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    const spy=new IntersectionObserver((es)=>{const v=es.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(!v)return;const id='#'+v.target.id;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));},{rootMargin:'-40% 0px -55% 0px',threshold:[0,.1,.5,1]});
-    secs.forEach(s=>spy.observe(s));
+    // Scroll-spy for navigation
+    const links = [...document.querySelectorAll('nav .links a')];
+    const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const spy = new IntersectionObserver((entries) => {
+      const visible = entries.filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const id = '#' + visible.target.id;
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+    }, {rootMargin: '-40% 0px -55% 0px', threshold: [0, .1, .5, 1]});
+    secs.forEach(s => spy.observe(s));
+
+    // Card hover effect
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty('--mx', x + '%');
+        card.style.setProperty('--my', y + '%');
+      });
+    });
   </script>
 </body>
 </html>
