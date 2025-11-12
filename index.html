@@ -3,400 +3,593 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Aarav Lala: Highschool Student interested in ML</title>
-  <meta name="description" content="Aarav Lala: topics of interest: Model Compression, LLM Distillation, Attention–field Geometry, NLP, and Multi-objective RL." />
-  <meta name="theme-color" content="#0b0c12" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-
-  <link rel="canonical" href="https://aarlala.github.io/" />
-
-  <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Aarav Lala: Highschool Student interested in ML" />
-  <meta property="og:description" content="Topics of interest: Model Compression, LLM Distillation, Attention–field Geometry, NLP, and Multi-objective RL."/>
-  <meta property="og:url" content="https://aarlala.github.io/" />
-  <meta property="og:image" content="https://aarlala.github.io/github.jpg" />
-  <meta property="profile:first_name" content="Aarav" />
-  <meta property="profile:last_name" content="Lala" />
-
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Aarav Lala: Highschool Student interested in ML" />
-  <meta name="twitter:description" content="Topics of interest: Model Compression, LLM Distillation, Attention–field Geometry, NLP, and Multi-objective RL" />
-  <meta name="twitter:image" content="https://aarlala.github.io/github.jpg" />
-
-  <meta name="google-site-verification" content="6Osee1KmqfPv6QlRZPVeSqIl23EZmJWxDLXWiyPE57k" />
-  <link rel="icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="manifest" href="/site.webmanifest">
-
+  <title>Aarav Lala: ML Researcher & Systems Builder</title>
+  <meta name="description" content="Machine learning researcher specializing in model compression, scaling laws, and attention geometry. Published at NeurIPS workshops and IEEE journals." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg:#0a0b11;
-      --bg2:#0f1018;
-      --panel:#14151f;
-      --glass:rgba(255,255,255,.05);
-      --border:rgba(255,255,255,.12);
-      --text:#f0f3f7;
-      --muted:#a2aab8;
-      --primary:#3af6ff;
-      --secondary:#ff5b9b;
-      --accent:#7e6bff;
-      --radius:18px;
-      --shadow:0 16px 48px rgba(0,0,0,.4);
-      --focus:0 0 0 4px rgba(58,246,255,.15);
+      --bg: #08090e;
+      --bg-elevated: #0d0e15;
+      --surface: #12131c;
+      --surface-bright: #1a1b27;
+      --border: rgba(255,255,255,.08);
+      --border-bright: rgba(255,255,255,.15);
+      --text: #f5f7fa;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --primary: #00d9ff;
+      --primary-glow: rgba(0,217,255,.2);
+      --secondary: #ff3366;
+      --accent: #a78bfa;
+      --success: #10b981;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,.3);
+      --shadow-md: 0 8px 24px rgba(0,0,0,.4);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,.5);
+      --glow: 0 0 40px var(--primary-glow);
     }
     
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth;scroll-padding-top:80px}
-    body{
-      min-height:100vh;
-      font-family:Inter,system-ui,-apple-system,sans-serif;
-      line-height:1.65;
-      background:
-        radial-gradient(ellipse 1400px 700px at 10% 8%, rgba(58,246,255,.08), transparent 65%),
-        radial-gradient(ellipse 1000px 600px at 90% 12%, rgba(255,91,155,.09), transparent 65%),
-        radial-gradient(ellipse 1100px 650px at 25% 92%, rgba(126,107,255,.08), transparent 65%),
-        linear-gradient(180deg,var(--bg),var(--bg2));
-      background-attachment:fixed;
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
     }
     
-    .container{width:min(1140px,94vw);margin:0 auto}
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: 
+        radial-gradient(circle 1200px at 15% 10%, rgba(0,217,255,.08), transparent 65%),
+        radial-gradient(circle 1000px at 85% 15%, rgba(255,51,102,.06), transparent 60%),
+        radial-gradient(circle 800px at 50% 90%, rgba(167,139,250,.05), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
     
-    a{
-      color:var(--primary);
-      text-underline-offset:3px;
-      text-decoration-color:rgba(58,246,255,.3);
-      transition:all .2s ease;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+      position: relative;
+      z-index: 1;
     }
-    a:hover{
-      text-decoration-color:var(--primary);
-      color:#5ffaff;
-    }
-    :focus-visible{outline:none;box-shadow:var(--focus)}
     
     /* Header */
-    header.sticky{
-      position:sticky;
-      top:0;
-      z-index:100;
-      background:linear-gradient(180deg,rgba(10,11,17,.92),rgba(10,11,17,.75),transparent);
-      backdrop-filter:blur(16px) saturate(180%);
-      border-bottom:1px solid var(--border);
-      animation:slideDown .4s ease;
-    }
-    @keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
-    
-    nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:1.5rem;
-      padding:1rem 0;
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,9,14,.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+      animation: slideDown .5s ease;
     }
     
-    .brand{
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      font-weight:800;
-      font-size:.95rem;
-      color:var(--text);
-      text-decoration:none;
-      background:linear-gradient(135deg,var(--primary),var(--secondary));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      transition:filter .3s ease;
-    }
-    .brand:hover{filter:brightness(1.2)}
-    
-    nav .links{display:flex;gap:.5rem;flex-wrap:wrap}
-    nav a:not(.brand){
-      color:var(--muted);
-      text-decoration:none;
-      font-weight:600;
-      font-size:.9rem;
-      padding:.6rem .95rem;
-      border-radius:12px;
-      border:1px solid transparent;
-      transition:all .25s ease;
-      position:relative;
-    }
-    nav a:not(.brand):hover{
-      color:var(--text);
-      background:var(--glass);
-      border-color:var(--border);
-      transform:translateY(-1px);
-    }
-    nav a.active{
-      color:var(--primary);
-      background:rgba(58,246,255,.06);
-      border-color:rgba(58,246,255,.2);
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
     
-    /* Buttons */
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:.6rem;
-      padding:.9rem 1.3rem;
-      border-radius:14px;
-      font-weight:700;
-      font-size:.9rem;
-      border:1px solid var(--border);
-      background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03));
-      color:var(--text);
-      text-decoration:none;
-      transition:all .3s cubic-bezier(.4,0,.2,1);
-      position:relative;
-      overflow:hidden;
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      gap: 2rem;
     }
-    .btn::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(135deg,rgba(58,246,255,.1),transparent);
-      opacity:0;
-      transition:opacity .3s ease;
+    
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 900;
+      letter-spacing: .05em;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      transition: transform .2s ease;
     }
-    .btn:hover{
-      transform:translateY(-3px);
-      box-shadow:0 12px 32px rgba(58,246,255,.15);
-      border-color:rgba(58,246,255,.3);
+    
+    .brand:hover { transform: scale(1.05); }
+    
+    .nav-links {
+      display: flex;
+      gap: .5rem;
+      align-items: center;
     }
-    .btn:hover::before{opacity:1}
-    .btn.primary{
-      color:#05141c;
-      background:linear-gradient(135deg,var(--primary),var(--secondary));
-      border:none;
-      box-shadow:0 8px 24px rgba(58,246,255,.2);
+    
+    .nav-links a {
+      padding: .7rem 1.1rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .9rem;
+      border-radius: 10px;
+      transition: all .25s ease;
+      position: relative;
     }
-    .btn.primary:hover{
-      box-shadow:0 12px 36px rgba(58,246,255,.35);
-      transform:translateY(-3px) scale(1.02);
+    
+    .nav-links a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--primary), transparent);
+      opacity: 0;
+      border-radius: 10px;
+      transition: opacity .25s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.06);
+    }
+    
+    .nav-links a.active {
+      color: var(--primary);
+      background: rgba(0,217,255,.08);
     }
     
     /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns:1.2fr .8fr;
-      gap:2.5rem;
-      align-items:center;
-      padding:4.5rem 0 3rem;
-      animation:fadeInUp .8s ease;
-    }
-    @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(30px)}
-      to{opacity:1;transform:translateY(0)}
+    .hero {
+      padding: 5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 4rem;
+      align-items: center;
     }
     
-    .hero h1{
-      font-size:clamp(2.5rem,5vw,4.2rem);
-      line-height:1.05;
-      margin:.4rem 0 .8rem;
-      background:linear-gradient(120deg,var(--primary),var(--secondary) 45%,var(--accent));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      font-weight:900;
-      letter-spacing:-.02em;
-    }
-    .hero p{
-      color:var(--muted);
-      font-size:1.1rem;
-      line-height:1.7;
-      max-width:640px;
+    .hero-content { animation: fadeInUp .8s ease; }
+    
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     
-    .glass{
-      background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-      border:1px solid var(--border);
-      backdrop-filter:blur(12px) saturate(150%);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      position:relative;
-      overflow:hidden;
-    }
-    .glass::before{
-      content:'';
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
     }
     
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1.2rem}
-    .col-12{grid-column:span 12}
-    .col-8{grid-column:span 8}
-    .col-6{grid-column:span 6}
-    .col-4{grid-column:span 4}
-    
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr;gap:2rem}
-      .col-8,.col-6,.col-4{grid-column:span 12}
-      nav{flex-direction:column;align-items:stretch}
-      nav .links{justify-content:center}
+    .label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--success);
+      animation: pulse 2s infinite;
     }
     
-    section{padding:3.5rem 0}
-    .section-title{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:1.5rem;
-      gap:1rem;
-    }
-    .section-title h2{
-      font-size:2rem;
-      letter-spacing:-.01em;
-      font-weight:800;
-      background:linear-gradient(135deg,var(--text),var(--muted));
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
     }
     
-    /* Cards */
-    .card{
-      position:relative;
-      border-radius:var(--radius);
-      border:1px solid var(--border);
-      background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-      overflow:hidden;
-      transition:all .35s cubic-bezier(.4,0,.2,1);
-    }
-    .card::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(58,246,255,.08), transparent 50%);
-      opacity:0;
-      transition:opacity .3s ease;
-    }
-    .card:hover{
-      transform:translateY(-4px);
-      border-color:rgba(58,246,255,.25);
-      box-shadow:0 20px 60px rgba(0,0,0,.3);
-    }
-    .card:hover::before{opacity:1}
-    
-    .pad{padding:1.5rem;position:relative;z-index:1}
-    .card h3{
-      font-size:1.25rem;
-      margin-bottom:.6rem;
-      font-weight:700;
-      line-height:1.3;
-    }
-    .muted{color:var(--muted)}
-    
-    .tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem}
-    .tag{
-      padding:.4rem .8rem;
-      border-radius:999px;
-      background:rgba(58,246,255,.08);
-      border:1px solid rgba(58,246,255,.25);
-      color:var(--primary);
-      font-weight:700;
-      font-size:.8rem;
-      transition:all .2s ease;
-    }
-    .tag:hover{
-      background:rgba(58,246,255,.12);
-      border-color:rgba(58,246,255,.4);
-      transform:translateY(-1px);
-    }
-    .venue{
-      font-weight:800;
-      color:#ffe8ef;
-      background:rgba(255,91,155,.12);
-      border:1px solid rgba(255,91,155,.35);
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, var(--primary) 20%, var(--secondary) 50%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -.02em;
     }
     
-    .kicker{
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      font-weight:800;
-      color:var(--muted);
-      font-size:.85rem;
-      display:inline-block;
-      margin-bottom:.5rem;
+    .hero-description {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 580px;
+      margin-bottom: 2rem;
     }
     
-    /* Animations */
-    .reveal{
-      opacity:0;
-      transform:translateY(20px);
-      transition:opacity .7s ease,transform .7s ease;
-    }
-    .reveal.show{opacity:1;transform:translateY(0)}
-    
-    hr{border:none;border-top:1px solid var(--border);margin:0}
-    
-    ul{line-height:1.8}
-    
-    footer{
-      padding:3rem 0;
-      color:var(--muted);
-      border-top:1px solid var(--border);
-      text-align:center;
-      font-size:.9rem;
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
     
-    @media (prefers-reduced-motion:reduce){
-      *{animation:none!important;transition:none!important}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: .95rem;
+      text-decoration: none;
+      transition: all .3s cubic-bezier(.4,0,.2,1);
+      position: relative;
+      border: 1px solid var(--border-bright);
+      background: var(--surface);
+      color: var(--text);
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    
+    .btn.primary {
+      background: linear-gradient(135deg, var(--primary), #00b8d9);
+      color: #000;
+      border: none;
+      box-shadow: var(--glow);
+    }
+    
+    .btn.primary:hover {
+      box-shadow: 0 0 50px var(--primary-glow), var(--shadow-md);
+      transform: translateY(-2px) scale(1.02);
+    }
+    
+    /* Profile Card */
+    .profile-card {
+      background: linear-gradient(145deg, var(--surface-bright), var(--surface));
+      border: 1px solid var(--border-bright);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      animation: fadeIn 1s ease .3s backwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--border-bright);
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      margin: 0 auto 1.5rem;
+      display: block;
+    }
+    
+    .stats-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .stat-item {
+      padding: 1rem;
+      background: rgba(255,255,255,.03);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    
+    .stat-item h4 {
+      font-size: .85rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: .5rem;
+    }
+    
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: .9rem;
+      line-height: 1.5;
+    }
+    
+    /* Section */
+    section {
+      padding: 5rem 0;
+      position: relative;
+    }
+    
+    .section-header {
+      margin-bottom: 3rem;
+    }
+    
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 900;
+      margin-bottom: .5rem;
+      background: linear-gradient(135deg, var(--text), var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .section-subtitle {
+      color: var(--text-dim);
+      font-size: 1rem;
+    }
+    
+    /* Research Cards */
+    .research-grid {
+      display: grid;
+      gap: 2rem;
+    }
+    
+    .research-card {
+      background: linear-gradient(145deg, var(--surface-bright), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all .4s cubic-bezier(.4,0,.2,1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .research-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0,217,255,.08), transparent 60%);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+    
+    .research-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,217,255,.3);
+      box-shadow: var(--glow), var(--shadow-lg);
+    }
+    
+    .research-card:hover::before { opacity: 1; }
+    
+    .research-card > * { position: relative; z-index: 1; }
+    
+    .research-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    
+    .research-card h3 a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    
+    .research-card h3 a:hover { color: var(--primary); }
+    
+    .research-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+    
+    .tag {
+      padding: .5rem .9rem;
+      border-radius: 8px;
+      font-size: .8rem;
+      font-weight: 700;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      transition: all .2s ease;
+    }
+    
+    .tag:hover {
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+    }
+    
+    .tag.venue {
+      background: rgba(0,217,255,.1);
+      border-color: rgba(0,217,255,.3);
+      color: var(--primary);
+    }
+    
+    /* Experience Grid */
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .exp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: all .3s ease;
+    }
+    
+    .exp-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .exp-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: .8rem;
+    }
+    
+    .exp-card .tech {
+      color: var(--text-dim);
+      font-size: .85rem;
+      margin-bottom: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .exp-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .exp-card li {
+      color: var(--text-muted);
+      padding-left: 1.5rem;
+      margin-bottom: .7rem;
+      position: relative;
+      line-height: 1.6;
+    }
+    
+    .exp-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    /* Awards Grid */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    
+    .award-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      transition: all .3s ease;
+    }
+    
+    .award-card:hover {
+      background: var(--surface-bright);
+      border-color: var(--border-bright);
+      transform: translateY(-2px);
+    }
+    
+    .award-card h4 {
+      font-size: 1.05rem;
+      margin-bottom: .5rem;
+    }
+    
+    .award-card p {
+      color: var(--text-muted);
+      font-size: .9rem;
+    }
+    
+    /* Skills */
+    .skills-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .8rem;
+    }
+    
+    .skill-tag {
+      padding: .8rem 1rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: all .2s ease;
+    }
+    
+    .skill-tag:hover {
+      background: rgba(0,217,255,.08);
+      border-color: rgba(0,217,255,.2);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    
+    .contact-card p {
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    
+    .contact-card a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    
+    .contact-card a:hover { color: var(--secondary); }
+    
+    .links-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .links-list li {
+      margin-bottom: .8rem;
+    }
+    
+    /* Footer */
+    footer {
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-dim);
+      font-size: .9rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 3rem 0;
+      }
+      
+      .nav-links { flex-wrap: wrap; }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .cta-group { flex-direction: column; }
+      .btn { width: 100%; justify-content: center; }
     }
   </style>
-
-  <!-- JSON-LD structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Person",
-        "@id": "https://aarlala.github.io/#person",
-        "name": "Aarav Lala",
-        "givenName": "Aarav",
-        "familyName": "Lala",
-        "url": "https://aarlala.github.io/",
-        "image": "https://aarlala.github.io/images/aarav-lala.jpg",
-        "jobTitle": "Machine Learning Researcher",
-        "description": "Topics of interest: Model Compression, LLM Distillation, Attention–field Geometry, NLP, and Multi-objective RL.",
-        "sameAs": [
-          "https://www.linkedin.com/in/aarav-lala",
-          "https://scholar.google.com/citations?user=TLSI5sQAAAAJ",
-          "https://orcid.org/0009-0009-7140-5244",
-          "https://aarlala.github.io"
-        ],
-        "email": "mailto:aaravh.lala@gmail.com"
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://aarlala.github.io/#website",
-        "url": "https://aarlala.github.io/",
-        "name": "Aarav Lala: Research Portfolio",
-        "publisher": { "@id": "https://aarlala.github.io/#person" },
-        "inLanguage": "en"
-      }
-    ]
-  }
-  </script>
 </head>
 <body>
-  <header class="sticky">
+  <header>
     <div class="container">
-      <nav aria-label="Primary">
-        <a class="brand" href="#top">Aarav Lala</a>
-        <div class="links" role="navigation">
+      <nav>
+        <a class="brand" href="#top">AARAV LALA</a>
+        <div class="nav-links">
           <a href="#research">Research</a>
-          <a href="#experience">Internships</a>
+          <a href="#experience">Experience</a>
           <a href="#awards">Awards</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
@@ -405,204 +598,197 @@
     </div>
   </header>
 
-  <main id="top" class="container">
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <span class="kicker">Machine Learning • Theory • Systems</span>
-        <h1>Aarav Lala</h1>
-        <p>I build  ML systems focusing on model compression, information-theoretic limits, scaling laws, attention–field geometry, and healthcare NLP. Previously worked at Industry companies</p>
-        <div style="display:flex;gap:.9rem;flex-wrap:wrap;margin-top:1.3rem">
+  <main class="container">
+    <section class="hero" id="top">
+      <div class="hero-content">
+        <div class="label">Machine Learning Researcher</div>
+        <h1>Building Efficient Intelligence</h1>
+        <p class="hero-description">
+          Focused on model compression, scaling laws, and attention geometry. Published at NeurIPS workshops and IEEE journals. Building systems that make AI more accessible through theoretical insights and practical implementations.
+        </p>
+        <div class="cta-group">
           <a class="btn primary" href="#research">View Research</a>
-          <a class="btn" href="mailto:aaravh.lala@gmail.com">Email</a>
-          <a class="btn" href="https://www.linkedin.com/in/aarav-lala" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="mailto:aaravh.lala@gmail.com">Get in Touch</a>
           <a class="btn" href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
         </div>
       </div>
-      <div class="glass">
-        <img src="/github.jpg"
-     alt="Aarav Lala, machine learning researcher"
-     style="width:200px;height:auto;border-radius:50%;display:block;margin:0 auto;"
-     loading="lazy">
-        <hr>
-        <div class="pad">
-          <h3 style="margin:.2rem 0 .5rem">Highlights</h3>
-          <p class="muted" style="margin:0">NeurIPS workshops (ARLET, NeurReps, JMLR Proceedings, Evolving LLM Lifecycle; ICMLT to IEEE journal.</p>
-        </div>
-        <hr>
-        <div class="pad">
-          <h3 style="margin:.2rem 0 .5rem">Teaching & Outreach</h3>
-          <p class="muted" style="margin:0">Mentored Students to USACO Gold; AMC/AIME prep; reviewer for multiple NeurIPS workshops.</p>
+      
+      <div class="profile-card">
+        <img src="/github.jpg" alt="Aarav Lala" class="profile-img" loading="lazy">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h4>Publications</h4>
+            <p>NeurIPS workshops (ARLET, NeurReps, Evolving LLM), ICMLT → IEEE journal</p>
+          </div>
+          <div class="stat-item">
+            <h4>Impact</h4>
+            <p>Teaching mentorship: USACO Gold pathways, AMC/AIME prep, NeurIPS reviewing</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- RESEARCH -->
-    <section id="research" class="reveal" aria-labelledby="research-heading">
-      <div class="section-title"><h2 id="research-heading">Research</h2></div>
-      <div class="grid">
-  <article class="col-12 card">
-    <div class="pad">
-      <h3>
-        <a href="https://ieeexplore.ieee.org/document/11193154" target="_blank" rel="noopener noreferrer">
-          Low-Rank Matrix Approximation for Neural Network Compression
-        </a>
-      </h3>
-      <p class="muted">
-        Introduces <strong>Adaptive-Rank SVD (ARSVD)</strong>, selecting layer ranks via <em>spectral entropy</em> to preserve information content.
-        Outperforms fixed-rank SVD on ResNet18, VGG16, InceptionV3 with stronger compression–accuracy trade-offs.
-      </p>
-      <div class="tags">
-        <span class="tag venue">ICMLT 2025 (presented) → IEEE journal</span>
-        <span class="tag">SVD</span>
-        <span class="tag">Spectral Entropy</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag">Model Compression</span>
+    <section id="research">
+      <div class="section-header">
+        <h2 class="section-title">Research</h2>
+        <p class="section-subtitle">Bridging theory and practice in machine learning</p>
       </div>
-    </div>
-  </article>
-</div>
+      
+      <div class="research-grid">
+        <article class="research-card">
+          <h3><a href="https://ieeexplore.ieee.org/document/11193154" target="_blank" rel="noopener">Low-Rank Matrix Approximation for Neural Network Compression</a></h3>
+          <p>Introduces Adaptive-Rank SVD (ARSVD), selecting layer ranks via spectral entropy to preserve information content. Outperforms fixed-rank SVD on ResNet18, VGG16, InceptionV3 with stronger compression–accuracy trade-offs.</p>
+          <div class="tags">
+            <span class="tag venue">ICMLT 2025 → IEEE Journal</span>
+            <span class="tag">SVD</span>
+            <span class="tag">Spectral Entropy</span>
+            <span class="tag">Model Compression</span>
+          </div>
+        </article>
 
+        <article class="research-card">
+          <h3>The Minimax Complexity of Preference-Based Decision Making in Multi-Objective RL</h3>
+          <p>Decision-theoretic framework that minimizes utility regret from pairwise preferences, without reward recovery. Proves tight lower bounds governed by Pareto-front geometry and matches them with a query-efficient algorithm.</p>
+          <div class="tags">
+            <span class="tag venue">NeurIPS 2025 — ARLET Workshop</span>
+            <span class="tag">Minimax</span>
+            <span class="tag">Regret Bounds</span>
+            <span class="tag">Pareto Front</span>
+          </div>
+        </article>
 
-<article class="col-12 card"><div class="pad">
-  <h3>The Minimax Complexity of Preference-Based Decision Making in Multi-Objective RL</h3>
-  <p class="muted">Decision-theoretic framework that minimizes <strong>utility regret</strong> from pairwise preferences, without reward recovery. Proves tight lower bounds governed by Pareto-front geometry and matches them with a query-efficient algorithm.</p>
-  <div class="tags"><span class="tag venue">NeurIPS 2025 — ARLET Workshop (accepted)</span><span class="tag">Minimax</span><span class="tag">Regret Bounds</span><span class="tag">Pareto Front</span></div>
-</div></article>
+        <article class="research-card">
+          <h3><a href="https://openreview.net/pdf?id=Ek7Y2Uoffl" target="_blank" rel="noopener">Neural Fields Meet Attention</a></h3>
+          <p>Proves affine equivariance for Transformer operators with relative encodings + normalization, and an attention–gradient identity: linear attention computes exact negative gradients for sinusoidal fields; softmax attention converges at O(τ⁻²).</p>
+          <div class="tags">
+            <span class="tag venue">NeurIPS 2025 — NeurReps</span>
+            <span class="tag">Equivariance</span>
+            <span class="tag">Linear Attention</span>
+            <span class="tag">Geometry</span>
+          </div>
+        </article>
 
-<article class="col-12 card"><div class="pad">
-  <h3><a href="https://openreview.net/pdf?id=Ek7Y2Uoffl" target="_blank">Neural Fields Meet Attention</a></h3>
-  <p class="muted">Proves <strong>affine equivariance</strong> for Transformer operators with relative encodings + normalization, and an <strong>attention–gradient identity</strong>: linear attention computes exact negative gradients for sinusoidal fields; softmax attention converges at O(τ<sup>−2</sup>).</p>
-  <div class="tags"><span class="tag venue">NeurIPS 2025 — NeurReps Proceedings (accepted)</span><span class="tag">Equivariance</span><span class="tag">Linear Attention</span><span class="tag">Geometry</span></div>
-</div></article>
+        <article class="research-card">
+          <h3><a href="https://openreview.net/pdf?id=y7mBTQM7c4" target="_blank" rel="noopener">Phase-Transitional Scaling</a></h3>
+          <p>Models emergent abilities as phase transitions with a sigmoid response. Threshold T_K tracks data complexity; sharpness γ_K reflects training dynamics. Achieves universal curve collapse and 4× better out-of-sample prediction than power-law baselines.</p>
+          <div class="tags">
+            <span class="tag venue">NeurIPS 2025 — Evolving LLM</span>
+            <span class="tag">Scaling Laws</span>
+            <span class="tag">Statistical Physics</span>
+            <span class="tag">Emergent Abilities</span>
+          </div>
+        </article>
 
-<article class="col-12 card"><div class="pad">
-  <h3><a href="https://openreview.net/pdf?id=y7mBTQM7c4" target="_blank">Phase-Transitional Scaling</a></h3>
-  <p class="muted">Models emergent abilities as phase transitions with a sigmoid response. Threshold T<sub>K</sub> tracks data complexity; sharpness γ<sub>K</sub> reflects training dynamics. Achieves universal curve collapse and 4× better out-of-sample prediction than power-law baselines.</p>
-  <div class="tags"><span class="tag venue">NeurIPS 2025 — Evolving LLM Lifecycle Workshop (accepted)</span><span class="tag">Scaling Laws</span><span class="tag">Statistical Physics</span><span class="tag">Emergent Abilities</span></div>
-</div></article>
-
-
-
-        <article class="col-12 card"><div class="pad">
+        <article class="research-card">
           <h3>Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</h3>
-          <p class="muted">206k YouTube comments; balanced annotations for first-person vs vicarious experiences. Fine-tuned BERT & Mistral-7B for stance/sentiment; digestive side-effects dominate adverse reports; public narrative diverges from clinical framing.</p>
-          <div class="tags"><span class="tag venue"></span><span class="tag">LLMs</span><span class="tag">Stance Mining</span><span class="tag">Healthcare NLP</span></div>
-        </div></article>
+          <p>206k YouTube comments; balanced annotations for first-person vs vicarious experiences. Fine-tuned BERT & Mistral-7B for stance/sentiment; digestive side-effects dominate adverse reports; public narrative diverges from clinical framing.</p>
+          <div class="tags">
+            <span class="tag">LLMs</span>
+            <span class="tag">Stance Mining</span>
+            <span class="tag">Healthcare NLP</span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- INTERNSHIPS -->
-    <section id="experience" class="reveal" aria-labelledby="experience-heading">
-      <div class="section-title"><h2 id="experience-heading">Internships</h2><span class="kicker">systems & data engineering</span></div>
-      <div class="grid">
-        <div class="col-8 card"><div class="pad">
-          <h3>Quantitative Developer Intern — Research Rebellion</h3>
-          <p class="muted">Python • PostgreSQL • multithreading • BeautifulSoup</p>
-          <ul class="muted" style="margin:.7rem 0 0 1.2rem">
-            <li>Built SEC filings pipeline across 7,000+ companies; curated 210k 10-K reports; 5× faster downloads.</li>
-            <li>Integrated dataset with trading research; scheduled ETL and schema design for long-horizon backtests.</li>
+    <section id="experience">
+      <div class="section-header">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">Systems and data engineering roles</p>
+      </div>
+      
+      <div class="exp-grid">
+        <article class="exp-card">
+          <h3>Quantitative Developer Intern</h3>
+          <p class="tech">Python • PostgreSQL • BeautifulSoup</p>
+          <p style="color: var(--text-dim); font-size: .9rem; margin-bottom: 1rem;">Research Rebellion</p>
+          <ul>
+            <li>Built SEC filings pipeline across 7,000+ companies; curated 210k 10-K reports with 5× faster downloads</li>
+            <li>Integrated dataset with trading research; scheduled ETL and schema design for long-horizon backtests</li>
           </ul>
-        </div></div>
-        <div class="col-4 card"><div class="pad">
-          <h3>Software App Dev Intern — Caterpillar</h3>
-          <p class="muted">Swift/SwiftUI • Xcode • on-device search</p>
-          <ul class="muted" style="margin:.7rem 0 0 1.2rem">
-            <li>Shipped <em>Spotter's Guide</em> v1 for dealer machinery specs; cross-platform usage &gt; 5,000.</li>
-            <li>Designed storage and optimized search for catalog queries.</li>
+        </article>
+
+        <article class="exp-card">
+          <h3>Software App Dev Intern</h3>
+          <p class="tech">Swift/SwiftUI • Xcode</p>
+          <p style="color: var(--text-dim); font-size: .9rem; margin-bottom: 1rem;">Caterpillar</p>
+          <ul>
+            <li>Shipped Spotter's Guide v1 for dealer machinery specs; cross-platform usage > 5,000</li>
+            <li>Designed storage and optimized search for catalog queries</li>
           </ul>
-        </div></div>
-        <div class="col-12 card"><div class="pad">
-          <h3>Youth Wellness Intern — University of Illinois Urbana-Champaign</h3>
-          <p class="muted">NLP • bias/health equity</p>
-          <ul class="muted" style="margin:.7rem 0 0 1.2rem">
-            <li>Applied language models to characterize linguistic markers tied to healthcare disparities; stipend award.</li>
+        </article>
+
+        <article class="exp-card">
+          <h3>Youth Wellness Intern</h3>
+          <p class="tech">NLP • Health Equity</p>
+          <p style="color: var(--text-dim); font-size: .9rem; margin-bottom: 1rem;">UIUC</p>
+          <ul>
+            <li>Applied language models to characterize linguistic markers tied to healthcare disparities; received stipend award</li>
           </ul>
-        </div></div>
+        </article>
       </div>
     </section>
 
-    <!-- AWARDS -->
-    <section id="awards" class="reveal" aria-labelledby="awards-heading">
-      <div class="section-title"><h2 id="awards-heading">Awards & Achievements</h2></div>
-      <div class="grid">
-        <div class="col-4 card"><div class="pad"><h3>USACO Gold</h3><p class="muted">2025 • Competitive programming (top ~10%).</p></div></div>
-        <div class="col-4 card"><div class="pad"><h3>2× AIME Qualifier</h3><p class="muted">2023, 2024 • Top ~5% in AMC/AIME pathway.</p></div></div>
-        <div class="col-4 card"><div class="pad"><h3>Innovation Grants</h3><p class="muted">NIU AI (1st), Amazon & Taco Bell • Seeded TalkTabs.</p></div></div>
-        <div class="col-4 card"><div class="pad"><h3>Finance Challenge — IL</h3><p class="muted">3rd place • Near-perfect case score.</p></div></div>
-        <div class="col-4 card"><div class="pad"><h3>AL State Chess Champion (U1800)</h3><p class="muted">First place • Dual-rated event.</p></div></div>
-        <div class="col-4 card"><div class="pad"><h3>Tabla — First Class Cert.</h3><p class="muted">12+ years training • Delhi Gharana.</p></div></div>
+    <section id="awards">
+      <div class="section-header">
+        <h2 class="section-title">Recognition</h2>
       </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="reveal" aria-labelledby="skills-heading">
-      <div class="section-title"><h2 id="skills-heading">Technical Skills</h2></div>
-      <div class="card pad">
-        <div class="tags" style="gap:.65rem">
-          <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">NumPy</span><span class="tag">Pandas</span>
-          <span class="tag">C++</span><span class="tag">C#</span><span class="tag">Swift/SwiftUI</span><span class="tag">PostgreSQL</span>
-          <span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">Proxmox</span><span class="tag">Wazuh</span>
-          <span class="tag">Model Compression</span><span class="tag">RL</span><span class="tag">LLM Fine-tuning</span><span class="tag">Info Theory</span>
+      
+      <div class="awards-grid">
+        <div class="award-card">
+          <h4>USACO Gold</h4>
+          <p>2025 • Top ~10% in competitive programming</p>
+        </div>
+        <div class="award-card">
+          <h4>2× AIME Qualifier</h4>
+          <p>2023, 2024 • Top ~5% AMC pathway</p>
+        </div>
+        <div class="award-card">
+          <h4>Innovation Grants</h4>
+          <p>NIU AI (1st), Amazon & Taco Bell</p>
+        </div>
+        <div class="award-card">
+          <h4>Finance Challenge — Illinois</h4>
+          <p>3rd place • Near-perfect case score</p>
+        </div>
+        <div class="award-card">
+          <h4>AL State Chess Champion</h4>
+          <p>First place U1800 • Dual-rated</p>
+        </div>
+        <div class="award-card">
+          <h4>Tabla Certification</h4>
+          <p>First Class • 12+ years Delhi Gharana</p>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="reveal" aria-labelledby="contact-heading">
-      <div class="section-title"><h2 id="contact-heading">Contact</h2></div>
-      <div class="grid">
-        <div class="col-8 card"><div class="pad">
-          <p class="muted">Open to research collaborations and internships. Reach me at <a href="mailto:aaravh.lala@gmail.com">aaravh.lala@gmail.com</a> or connect on <a href="https://www.linkedin.com/in/aarav-lala" target="_blank" rel="noopener">LinkedIn</a>. Publications on <a href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.</p>
-        </div></div>
-        <div class="col-4 card"><div class="pad">
-          <h3>Elsewhere</h3>
-          <ul class="muted" style="list-style:none;padding:0;line-height:1.9">
-            <li><a href="https://aarlala.github.io" target="_blank" rel="noopener">aarlala.github.io</a></li>
-            <li><a href="https://orcid.org/0009-0009-7140-5244" target="_blank" rel="noopener">ORCID</a></li>
-          </ul>
-        </div></div>
+    <section id="skills">
+      <div class="section-header">
+        <h2 class="section-title">Technical Skills</h2>
+      </div>
+      
+      <div class="skills-container">
+        <div class="skills-grid">
+          <div class="skill-tag">Python</div>
+          <div class="skill-tag">PyTorch</div>
+          <div class="skill-tag">NumPy</div>
+          <div class="skill-tag">Pandas</div>
+          <div class="skill-tag">C++</div>
+          <div class="skill-tag">C#</div>
+          <div class="skill-tag">Swift/SwiftUI</div>
+          <div class="skill-tag">PostgreSQL</div>
+          <div class="skill-tag">Docker</div>
+          <div class="skill-tag">Linux</div>
+          <div class="skill-tag">Proxmox</div>
+          <div class="skill-tag">Wazuh</div>
+          <div class="skill-tag">Model Compression</div>
+          <div class="skill-tag">RL</div>
+          <div class="skill-tag">LLM Fine-tuning</div>
+          <div class="skill-tag">Info Theory</div>
+        </div>
       </div>
     </section>
 
-    <footer>
-      <div class="container">© <span id="year"></span> Aarav Lala · Research Portfolio</div>
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Reveal on scroll
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('show');
-      });
-    }, {threshold: .12});
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // Scroll-spy for navigation
-    const links = [...document.querySelectorAll('nav .links a')];
-    const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-    const spy = new IntersectionObserver((entries) => {
-      const visible = entries.filter(e => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
-      const id = '#' + visible.target.id;
-      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
-    }, {rootMargin: '-40% 0px -55% 0px', threshold: [0, .1, .5, 1]});
-    secs.forEach(s => spy.observe(s));
-
-    // Card hover effect
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        card.style.setProperty('--mx', x + '%');
-        card.style.setProperty('--my', y + '%');
-      });
-    });
-  </script>
-</body>
-</html>
+    <section id="contact">
+      <div class="section-header">
+        <h2 class="section
