@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aarav Lala — ML Researcher</title>
+  <meta name="description" content="Machine learning researcher specializing in model compression, scaling laws, and attention geometry." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+    :root {
+      --ink: #111;
+      --ink-mid: #444;
+      --ink-light: #888;
+      --rule: #e2e2e2;
+      --bg: #fff;
+      --bg-warm: #fafaf8;
+      --accent: #1a1a1a;
+      --link: #2563eb;
+      --tag-bg: #f3f3f0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    /* ── Nav ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    nav {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .brand {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: .25rem;
+    }
+
+    .nav-links a {
+      font-size: .8rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      text-decoration: none;
+      padding: .4rem .7rem;
+      border-radius: 6px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      transition: color .15s, background .15s;
+    }
+
+    .nav-links a:hover { color: var(--ink); background: #f5f5f5; }
+
+    /* ── Layout ── */
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section { padding: 4rem 0; border-top: 1px solid var(--rule); }
+    section:first-of-type { border-top: none; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hero-text h1 {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      margin-bottom: 1rem;
+      color: var(--ink);
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--ink-mid);
+    }
+
+    .hero-bio {
+      max-width: 520px;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-size: .95rem;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .55rem 1.1rem;
+      border-radius: 6px;
+      font-size: .83rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all .15s;
+      letter-spacing: .02em;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: #fff;
+      border: 1.5px solid var(--ink);
+    }
+
+    .btn-primary:hover { background: #333; border-color: #333; }
+
+    .btn-ghost {
+      border: 1.5px solid var(--rule);
+      color: var(--ink-mid);
+      background: transparent;
+    }
+
+    .btn-ghost:hover { border-color: #bbb; color: var(--ink); background: #fafafa; }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 1.5px solid var(--rule);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    /* ── Section labels ── */
+    .sec-label {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Research ── */
+    .paper {
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .paper:last-child { border-bottom: none; }
+
+    .paper-title {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.35;
+      color: var(--ink);
+      text-decoration: none;
+      margin-bottom: .5rem;
+      display: block;
+    }
+
+    a.paper-title:hover { color: var(--link); }
+
+    .paper-venue {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: .65rem;
+    }
+
+    .paper-abstract {
+      font-size: .9rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: .85rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .tag {
+      font-size: .74rem;
+      font-weight: 500;
+      padding: .25rem .65rem;
+      background: var(--tag-bg);
+      border-radius: 4px;
+      color: var(--ink-mid);
+    }
+
+    /* ── Experience ── */
+    .exp-list { display: grid; gap: 1.5rem; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .exp-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--bg-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .65rem;
+      font-weight: 700;
+      color: var(--ink-mid);
+      letter-spacing: .04em;
+      flex-shrink: 0;
+    }
+
+    .exp-body h3 {
+      font-weight: 600;
+      font-size: .95rem;
+      margin-bottom: .2rem;
+    }
+
+    .exp-meta {
+      font-size: .8rem;
+      color: var(--ink-light);
+      margin-bottom: .6rem;
+    }
+
+    .exp-body ul {
+      padding-left: 1rem;
+    }
+
+    .exp-body li {
+      font-size: .88rem;
+      color: var(--ink-mid);
+      margin-bottom: .3rem;
+      line-height: 1.6;
+    }
+
+    /* ── Awards ── */
+    .award-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: .75rem;
+    }
+
+    .award {
+      padding: 1rem 1.25rem;
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      background: var(--bg-warm);
+    }
+
+    .award h4 {
+      font-size: .9rem;
+      font-weight: 600;
+      margin-bottom: .25rem;
+    }
+
+    .award p {
+      font-size: .8rem;
+      color: var(--ink-light);
+    }
+
+    /* ── Skills ── */
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+
+    .chip {
+      font-size: .82rem;
+      padding: .4rem .9rem;
+      border: 1px solid var(--rule);
+      border-radius: 100px;
+      color: var(--ink-mid);
+      background: var(--bg-warm);
+      transition: border-color .15s, color .15s;
+    }
+
+    .chip:hover { border-color: #999; color: var(--ink); }
+
+    /* ── Contact ── */
+    .contact-body {
+      font-size: .95rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    .contact-body a { color: var(--link); text-decoration: none; }
+    .contact-body a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0;
+      text-align: center;
+      font-size: .8rem;
+      color: var(--ink-light);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; gap: 1.5rem; }
+      .avatar { width: 80px; height: 80px; }
+      .hero-text h1 { font-size: 2rem; }
+      .nav-links a { font-size: .72rem; padding: .35rem .55rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="brand" href="#top">Aarav Lala</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- Hero -->
+    <div class="hero" id="top">
+      <div class="hero-text">
+        <h1>ML researcher.<br><em>Building efficient intelligence.</em></h1>
+        <p class="hero-bio">
+          Focused on model compression, scaling laws, and attention geometry. Published at NeurIPS workshops and IEEE journals. Building systems that make AI more accessible through theoretical insights and practical implementations.
+        </p>
+        <div class="hero-links">
+          <a class="btn btn-primary" href="#research">Research</a>
+          <a class="btn btn-ghost" href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a>
+          <a class="btn btn-ghost" href="mailto:aaravh.lala@gmail.com">Email</a>
+        </div>
+      </div>
+      <img src="/github.jpg" alt="Aarav Lala" class="avatar" loading="lazy">
+    </div>
+
+    <!-- Research -->
+    <section id="research">
+      <p class="sec-label">Research</p>
+
+      <div class="paper">
+        <a class="paper-title" href="https://ieeexplore.ieee.org/document/11193154" target="_blank" rel="noopener">
+          Low-Rank Matrix Approximation for Neural Network Compression
+        </a>
+        <p class="paper-venue">ICMLT 2025 → IEEE Journal</p>
+        <p class="paper-abstract">
+          Introduces Adaptive-Rank SVD (ARSVD), selecting layer ranks via spectral entropy to preserve information content. Outperforms fixed-rank SVD on ResNet18, VGG16, and InceptionV3 with stronger compression–accuracy trade-offs.
+        </p>
+        <div class="tags">
+          <span class="tag">SVD</span>
+          <span class="tag">Spectral Entropy</span>
+          <span class="tag">Model Compression</span>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-title">The Minimax Complexity of Preference-Based Decision Making in Multi-Objective RL</span>
+        <p class="paper-venue">NeurIPS 2025 — ARLET Workshop</p>
+        <p class="paper-abstract">
+          Decision-theoretic framework that minimizes utility regret from pairwise preferences, without reward recovery. Proves tight lower bounds governed by Pareto-front geometry and matches them with a query-efficient algorithm.
+        </p>
+        <div class="tags">
+          <span class="tag">Minimax</span>
+          <span class="tag">Regret Bounds</span>
+          <span class="tag">Pareto Front</span>
+        </div>
+      </div>
+
+      <div class="paper">
+        <a class="paper-title" href="https://openreview.net/pdf?id=Ek7Y2Uoffl" target="_blank" rel="noopener">
+          Neural Fields Meet Attention
+        </a>
+        <p class="paper-venue">NeurIPS 2025 — NeurReps</p>
+        <p class="paper-abstract">
+          Proves affine equivariance for Transformer operators with relative encodings and normalization, and an attention–gradient identity: linear attention computes exact negative gradients for sinusoidal fields; softmax attention converges at O(τ⁻²).
+        </p>
+        <div class="tags">
+          <span class="tag">Equivariance</span>
+          <span class="tag">Linear Attention</span>
+          <span class="tag">Geometry</span>
+        </div>
+      </div>
+
+      <div class="paper">
+        <a class="paper-title" href="https://openreview.net/pdf?id=y7mBTQM7c4" target="_blank" rel="noopener">
+          Phase-Transitional Scaling
+        </a>
+        <p class="paper-venue">NeurIPS 2025 — Evolving LLM</p>
+        <p class="paper-abstract">
+          Models emergent abilities as phase transitions with a sigmoid response. Threshold T_K tracks data complexity; sharpness γ_K reflects training dynamics. Achieves universal curve collapse and 4× better out-of-sample prediction than power-law baselines.
+        </p>
+        <div class="tags">
+          <span class="tag">Scaling Laws</span>
+          <span class="tag">Statistical Physics</span>
+          <span class="tag">Emergent Abilities</span>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-title">Does Ozempic Work? Investigating Social Web Stance Beyond Clinical Trials</span>
+        <p class="paper-venue">Preprint</p>
+        <p class="paper-abstract">
+          206k YouTube comments with balanced annotations for first-person vs. vicarious experiences. Fine-tuned BERT and Mistral-7B for stance/sentiment; digestive side-effects dominate adverse reports, and public narrative diverges from clinical framing.
+        </p>
+        <div class="tags">
+          <span class="tag">LLMs</span>
+          <span class="tag">Stance Mining</span>
+          <span class="tag">Healthcare NLP</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <p class="sec-label">Experience</p>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div class="exp-logo">RR</div>
+          <div class="exp-body">
+            <h3>Quantitative Developer Intern — Research Rebellion</h3>
+            <p class="exp-meta">Python · PostgreSQL · BeautifulSoup</p>
+            <ul>
+              <li>Built SEC filings pipeline across 7,000+ companies; curated 210k 10-K reports with 5× faster downloads.</li>
+              <li>Integrated dataset with trading research; designed ETL schema for long-horizon backtests.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">CAT</div>
+          <div class="exp-body">
+            <h3>Software App Dev Intern — Caterpillar</h3>
+            <p class="exp-meta">Swift · SwiftUI · Xcode</p>
+            <ul>
+              <li>Shipped Spotter's Guide v1 for dealer machinery specs; cross-platform usage exceeded 5,000.</li>
+              <li>Designed storage layer and optimized search for catalog queries.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-logo">UIUC</div>
+          <div class="exp-body">
+            <h3>Youth Wellness Intern — UIUC</h3>
+            <p class="exp-meta">NLP · Health Equity</p>
+            <ul>
+              <li>Applied language models to characterize linguistic markers tied to healthcare disparities; received stipend award.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Awards -->
+    <section id="awards">
+      <p class="sec-label">Recognition</p>
+      <div class="award-list">
+        <div class="award">
+          <h4>2× AIME Qualifier</h4>
+          <p>2023, 2024 · Top ~5% AMC pathway</p>
+        </div>
+        <div class="award">
+          <h4>Innovation Grants</h4>
+          <p>NIU AI (1st) · Amazon · Taco Bell</p>
+        </div>
+        <div class="award">
+          <h4>Finance Challenge — Illinois</h4>
+          <p>3rd place · Near-perfect case score</p>
+        </div>
+        <div class="award">
+          <h4>State Chess Champion</h4>
+          <p>1st place U1800 · Dual-rated</p>
+        </div>
+        <div class="award">
+          <h4>Tabla Certification</h4>
+          <p>First Class · 12+ years Delhi Gharana</p>
+        </div>
+        <div class="award">
+          <h4>NeurIPS Reviewer</h4>
+          <p>Peer review contributions</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <p class="sec-label">Skills</p>
+      <div class="skill-chips">
+        <span class="chip">Python</span>
+        <span class="chip">PyTorch</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">C++</span>
+        <span class="chip">C#</span>
+        <span class="chip">Swift / SwiftUI</span>
+        <span class="chip">PostgreSQL</span>
+        <span class="chip">Docker</span>
+        <span class="chip">Linux</span>
+        <span class="chip">Proxmox</span>
+        <span class="chip">Wazuh</span>
+        <span class="chip">Model Compression</span>
+        <span class="chip">Reinforcement Learning</span>
+        <span class="chip">LLM Fine-tuning</span>
+        <span class="chip">Information Theory</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <p class="sec-label">Contact</p>
+      <p class="contact-body">
+        Open to research collaborations, internships, and interesting problems.<br>
+        Reach me at <a href="mailto:aaravh.lala@gmail.com">aaravh.lala@gmail.com</a> or on
+        <a href="https://scholar.google.com/citations?user=TLSI5sQAAAAJ" target="_blank" rel="noopener">Google Scholar</a>.
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    Aarav Lala &middot; ML Researcher
+  </div>
+</footer>
+
+</body>
+</html>
