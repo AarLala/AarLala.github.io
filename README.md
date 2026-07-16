@@ -1,3 +1,3 @@
 # AarLala.github.io
 
-Hi there! Check out my portfolio site.
+Welcome! This is my personal website.
